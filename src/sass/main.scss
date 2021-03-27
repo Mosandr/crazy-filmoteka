@@ -1,0 +1,21 @@
+/*
+ * Главный файл стилей.
+ * Все паршалы подключаются сюда.
+ */
+// utils
+@import './utils/normalize';
+@import './utils/variables';
+
+//base
+@import './base/common';
+@import './base/container';
+
+// components
+@import './components/button';
+
+//layout
+@import './layout/header';
+@import './layout/gallery';
+@import './layout/pagination-bar';
+@import './layout/film-card-modal';
+@import './layout/footer';
