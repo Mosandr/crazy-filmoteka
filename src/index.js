@@ -1,4 +1,5 @@
-import './sass/main.css';
+import './sass/styles.scss';
+
 import header from './partials/header.html';
 import footer from './partials/footer.html';
 
