@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{QfWi:function(e,n,t){"use strict";t.r(n);t("yjly");var o=document.querySelector("BODY");o.insertAdjacentHTML("afterbegin",header),o.insertAdjacentHTML("beforeend",footer)},yjly:function(e,n,t){}},[["QfWi",1]]]);
+//# sourceMappingURL=main.fdbf9525716aa39c0f2f.js.map
