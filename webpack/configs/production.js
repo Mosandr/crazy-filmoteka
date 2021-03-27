@@ -1,6 +1,8 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+// const HtmlWebpackPartialsPlagin = require('html-webpack-partials-plugin');
+// const path = require('path');
 
 module.exports = env => ({
   devtool: 'source-map',
@@ -49,6 +51,16 @@ module.exports = env => ({
         useShortDoctype: true,
       },
     }),
+    // new HtmlWebpackPartialsPlagin({
+    //   path: path.join(__dirname, '../../src/partials/header.html'),
+    //   location: 'header',
+    //   template_filename: ['index.html'],
+    // }),
+    // new HtmlWebpackPartialsPlagin({
+    //   path: path.join(__dirname, '../../src/partials/footer.html'),
+    //   location: 'footer',
+    //   template_filename: ['index.html'],
+    // }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
       chunkFilename: '[name].[id].[contenthash].css',
