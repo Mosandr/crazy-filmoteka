@@ -1,39 +1,59 @@
-
 <header class="page-header">
-    <div class="container">
-      <nav class="site-nav">
-        <a class="logo" href="./index.html">
-          <img class=" logo-svg" src="./images/logo.svg" alt="logo">
-          <span class="logo-text">Filmoteka</span>
-        </a>
-        <ul class="site-nav-link list">
-          <li class="item home-js current">
-            <a href="./index.html"><span class="english">HOME</span><span class="russian">ГЛАВНАЯ</span></a>
-          </li>
-          <li class="item library-js">
-            <a href="#"><span class="english">MY LIBRARY</span><span class="russian">МОЯ БИБЛИОТЕКА</span></a>
-          </li>
-          <li class="theme-switch__control">
-            <a href="./index.html" width="10px" height="10px"></a>
-            <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle" />
-            <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
-            </label>
-            <div aria-hidden="true" class="theme-switch__marker"></div>
-          </li>
-        </ul>
-      </nav>
+  <div class="container">
+    <nav class="site-nav">
+      <!-- <a class="logo" href="./index.html">
+        <img class="logo-svg" src="" alt="logo" />
+        <span class="logo-text">Filmoteka</span>
+      </a> -->
+      <ul class="site-nav-link list">
+        <li class="item home-js current">
+          <a href="./index.html"
+            ><span class="english">HOME</span
+            ><span class="russian">ГЛАВНАЯ</span></a
+          >
+        </li>
+        <li class="item library-js">
+          <a href="#"
+            ><span class="english">MY LIBRARY</span
+            ><span class="russian">МОЯ БИБЛИОТЕКА</span></a
+          >
+        </li>
+        <li class="theme-switch__control">
+          <a href="./index.html" width="10px" height="10px"></a>
+          <input
+            class="theme-switch__toggle"
+            type="checkbox"
+            name="theme"
+            id="theme-switch-toggle"
+          />
+          <label
+            aria-hidden="true"
+            class="theme-switch__track"
+            for="theme-switch-toggle"
+          >
+          </label>
+          <div aria-hidden="true" class="theme-switch__marker"></div>
+        </li>
+      </ul>
+    </nav>
 
-      <form class="search-form" id="search-form">
-        <input class="search-form-input" type="text" name="query" autocomplete="off" />
-      </form>
+    <form class="search-form" id="search-form">
+      <input
+        class="search-form-input"
+        type="text"
+        name="query"
+        autocomplete="off"
+      />
+    </form>
 
-      <div class="header-button">
-        <button class="button watch is-hidden is-active" type="button"><span class="english">WATCHED</span><span
-            class="russian">ПРОСМОТРЕННЫЕ</span></button>
-        <button class="button queue is-hidden" type="button"><span class="english">QUEUE</span><span class="russian">В
-            ОЧЕРЕДИ</span></button>
-      </div>
-      
+    <div class="header-button">
+      <button class="button watch is-hidden is-active" type="button">
+        <span class="english">WATCHED</span
+        ><span class="russian">ПРОСМОТРЕННЫЕ</span>
+      </button>
+      <button class="button queue is-hidden" type="button">
+        <span class="english">QUEUE</span><span class="russian">В ОЧЕРЕДИ</span>
+      </button>
     </div>
-  </header>
-
+  </div>
+</header>
