@@ -1,2 +1,51 @@
 <h2>Header</h2>
 
+<!-- AUTH BTN LIST -->
+<ul id="auth" class="">
+  <li class="logged-in">
+    <a href="#" class="" id="logout">Logout</a>
+  </li>
+  <li class="logged-out">
+    <a href="#" class="" data-target="modal-login"> Login </a>
+  </li>
+  <li class="logged-out">
+    <a href="#" class="" data-target="modal-signup"> Sign up </a>
+  </li>
+</ul>
+<!-- SIGN UP MODAL -->
+<div id="modal-signup" class="modal">
+  <div class="modal-content">
+    <h4>Sign up</h4>
+    <br />
+    <form id="signup-form">
+      <div class="input-field">
+        <input type="email" id="signup-email" required />
+        <label for="signup-email">Email address</label>
+      </div>
+      <div class="input-field">
+        <input type="password" id="signup-password" required />
+        <label for="signup-password">Choose password</label>
+      </div>
+      <button class="">Sign up</button>
+    </form>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div id="modal-login" class="modal">
+  <div class="modal-content">
+    <h4>Login</h4>
+    <br />
+    <form id="login-form">
+      <div class="input-field">
+        <input type="email" id="login-email" required />
+        <label for="login-email">Email address</label>
+      </div>
+      <div class="input-field">
+        <input type="password" id="login-password" required />
+        <label for="login-password">Your password</label>
+      </div>
+      <button class="">Login</button>
+    </form>
+  </div>
+</div>
