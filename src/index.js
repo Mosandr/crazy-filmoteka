@@ -7,3 +7,6 @@ const bodyRef = document.querySelector('BODY');
 
 bodyRef.insertAdjacentHTML('afterbegin', header);
 bodyRef.insertAdjacentHTML('beforeend', footer);
+
+
+import './js/header.js'
