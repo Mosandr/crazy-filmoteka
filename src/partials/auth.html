@@ -1,13 +1,14 @@
 <!-- AUTH BTN LIST -->
 <ul id="auth" class="">
   <li class="logged-in">
-    <a href="#" class="" id="logout">Logout</a>
+    <a href="#" class="grey-text" id="logout">
+      <i class="material-icons"> logout </i>
+    </a>
   </li>
   <li class="logged-out">
-    <a href="#" class="" data-target="modal-login"> Login </a>
-  </li>
-  <li class="logged-out">
-    <a href="#" class="" data-target="modal-signup"> Sign up </a>
+    <a href="#" class="grey-text modal-trigger" data-target="modal-login">
+      <i class="material-icons"> perm_identity </i>
+    </a>
   </li>
 </ul>
 <!-- SIGN UP MODAL -->
@@ -24,7 +25,7 @@
         <input type="password" id="signup-password" required />
         <label for="signup-password">Choose password</label>
       </div>
-      <button class="">Sign up</button>
+      <button class="btn darken-2 z-depth-0">Sign up</button>
     </form>
   </div>
 </div>
@@ -43,7 +44,13 @@
         <input type="password" id="login-password" required />
         <label for="login-password">Your password</label>
       </div>
-      <button class="">Login</button>
+      <button class="btn darken-2 z-depth-0">Login</button>
     </form>
+    <p>
+      New user?
+      <a href="#" class="grey-text modal-trigger" data-target="modal-signup">
+        Sign up
+      </a>
+    </p>
   </div>
 </div>
