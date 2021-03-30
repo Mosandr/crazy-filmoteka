@@ -12,8 +12,6 @@ bodyRef.insertAdjacentHTML('beforeend', footer);
 
 const headerUi = new Header();
 
-console.log(headerUi.refs.linkHome);
-
 headerUi.init();
 
 import ApiServer from './js/apiService.js';
