@@ -1,12 +1,6 @@
-// import 'materialize-css/sass/components/_variables.scss';
-// import 'materialize-css/sass/components/_modal.scss';
-// import 'materialize-css/sass/components/_buttons.scss';
-
-// import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min.js';
 import authen from '../partials/auth.html';
 const bodyRef = document.querySelector('BODY');
-
 bodyRef.insertAdjacentHTML('afterbegin', authen);
 
 import firebase from 'firebase/app';
@@ -29,7 +23,7 @@ var app = firebase.initializeApp({
 const auth = firebase.auth();
 const db = firebase.firestore();
 // DOM elements
-const guideList = document.querySelector('.guides');
+// const guideList = document.querySelector('.guides');
 
 // setup guides
 // const setupGuides = (data) => {
@@ -54,15 +48,6 @@ const guideList = document.querySelector('.guides');
 //   .then(snapshot => {
 //     setupGuides(snapshot.docs);
 //   });
-
-// listen for auth status changes
-auth.onAuthStateChanged(user => {
-  if (user) {
-    console.log('user logged in: ', user);
-  } else {
-    console.log('user logged out');
-  }
-});
 
 // Sign up
 const signupForm = document.querySelector('#signup-form');
@@ -109,4 +94,31 @@ const signUpBtn = document.querySelector('[data-target="modal-signup"]');
 signUpBtn.addEventListener('click', () => {
   const modal = document.querySelector('#modal-login');
   M.Modal.getInstance(modal).close();
+});
+
+//hide button
+const loggedOutLink = document.querySelector('.logged-out');
+const loggedInLink = document.querySelector('.logged-in');
+
+const setupUI = user => {
+  if (user) {
+    // toggle user UI elements
+    loggedInLink.classList.add('is-hidden');
+    loggedOutLink.classList.remove('is-hidden');
+  } else {
+    // toggle user elements
+    loggedInLink.classList.remove('is-hidden');
+    loggedOutLink.classList.add('is-hidden');
+  }
+};
+
+// listen for auth status changes
+auth.onAuthStateChanged(user => {
+  if (user) {
+    console.log('user logged in: ', user);
+    setupUI(user);
+  } else {
+    console.log('user logged out');
+    setupUI();
+  }
 });
