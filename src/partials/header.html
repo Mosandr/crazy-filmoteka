@@ -1,58 +1,40 @@
-<header class="page-header">
+<header data-js="page-header" class="page-header">
   <div class="container">
     <nav class="site-nav">
-      <!-- <a class="logo" href="./index.html">
-        <img class="logo-svg" src="" alt="logo" />
+      <a class="logo" href="./index.html">
+        <svg class=" logo-svg" width="24px" height="24px" alt="logo">
+          <use href="../images/sprite.svg#logo"></use>
+        </svg>
         <span class="logo-text">Filmoteka</span>
-      </a> -->
+      </a>
       <ul class="site-nav-link list">
-        <li class="item home-js current">
+        <li  data-js="home-btn" class="item home-js current">
           <a href="./index.html"
-            ><span class="english">HOME</span
-            ><span class="russian">ГЛАВНАЯ</span></a
-          >
+            ><span>HOME</span>
         </li>
-        <li class="item library-js">
+        <li data-js="lib-btn" class="item lib-js">
           <a href="#"
-            ><span class="english">MY LIBRARY</span
-            ><span class="russian">МОЯ БИБЛИОТЕКА</span></a
-          >
-        </li>
-        <li class="theme-switch__control">
-          <a href="./index.html" width="10px" height="10px"></a>
-          <input
-            class="theme-switch__toggle"
-            type="checkbox"
-            name="theme"
-            id="theme-switch-toggle"
-          />
-          <label
-            aria-hidden="true"
-            class="theme-switch__track"
-            for="theme-switch-toggle"
-          >
-          </label>
-          <div aria-hidden="true" class="theme-switch__marker"></div>
+            ><span>MY LIBRARY</span>
         </li>
       </ul>
     </nav>
 
-    <form class="search-form" id="search-form">
+    <form  data-js="search-form" class="search-form" id="search-form">
       <input
         class="search-form-input"
         type="text"
         name="query"
         autocomplete="off"
+        placeholder="Поиск фильмов"
       />
     </form>
 
     <div class="header-button">
-      <button class="button watch is-hidden is-active" type="button">
-        <span class="english">WATCHED</span
-        ><span class="russian">ПРОСМОТРЕННЫЕ</span>
+      <button data-js="button-watch" class=" button watch is-hidden is-active" type="button">
+        <span>WATCHED</span>
       </button>
-      <button class="button queue is-hidden" type="button">
-        <span class="english">QUEUE</span><span class="russian">В ОЧЕРЕДИ</span>
+      <button data-js="button-queue" class=" button queue is-hidden" type="button">
+        <span>QUEUE</span>
       </button>
     </div>
   </div>
