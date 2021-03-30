@@ -1,6 +1,7 @@
 import './sass/styles.scss';
 import './js/auth.js';
 
+
 import header from './partials/header.html';
 import footer from './partials/footer.html';
 
@@ -25,3 +26,4 @@ const api = new ApiServer();
 // function onError(e) {
 //   console.dir(e);
 // }
+
