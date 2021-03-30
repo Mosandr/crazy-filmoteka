@@ -2,6 +2,16 @@
  * Главный файл стилей.
  * Все паршалы подключаются сюда.
  */
+//materialize-css
+@import 'materialize-css/sass/components/_color-variables.scss';
+@import 'materialize-css/sass/components/_color-classes.scss';
+@import 'materialize-css/sass/components/_variables.scss';
+@import 'materialize-css/sass/components/_modal.scss';
+@import 'materialize-css/sass/components/_buttons.scss';
+@import 'materialize-css/sass/components/forms/_forms.scss';
+@import 'materialize-css/sass/components/_global.scss';
+@import 'materialize-css/sass/components/_preloader.scss';
+
 // utils
 @import './utils/normalize';
 @import './utils/variables';
@@ -19,11 +29,3 @@
 @import './layout/pagination-bar';
 @import './layout/film-card-modal';
 @import './layout/footer';
-
-@import 'materialize-css/sass/components/_color-variables.scss';
-@import 'materialize-css/sass/components/_color-classes.scss';
-@import 'materialize-css/sass/components/_variables.scss';
-@import 'materialize-css/sass/components/_modal.scss';
-@import 'materialize-css/sass/components/_buttons.scss';
-@import 'materialize-css/sass/components/forms/_forms.scss';
-@import 'materialize-css/sass/components/global.scss';

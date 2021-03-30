@@ -1,4 +1,5 @@
 import './sass/styles.scss';
+import Header from './js/header';
 import './js/auth.js';
 
 import header from './partials/header.html';
@@ -8,6 +9,10 @@ const bodyRef = document.querySelector('BODY');
 
 bodyRef.insertAdjacentHTML('afterbegin', header);
 bodyRef.insertAdjacentHTML('beforeend', footer);
+
+const headerUi = new Header();
+
+headerUi.init();
 
 import ApiServer from './js/apiService.js';
 const api = new ApiServer();
