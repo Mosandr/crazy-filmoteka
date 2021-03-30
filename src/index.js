@@ -1,6 +1,6 @@
 import './sass/styles.scss';
+import Header from './js/header';
 import './js/auth.js';
-
 
 import header from './partials/header.html';
 import footer from './partials/footer.html';
@@ -9,6 +9,12 @@ const bodyRef = document.querySelector('BODY');
 
 bodyRef.insertAdjacentHTML('afterbegin', header);
 bodyRef.insertAdjacentHTML('beforeend', footer);
+
+const headerUi = new Header();
+
+console.log(headerUi.refs.linkHome);
+
+headerUi.init();
 
 import ApiServer from './js/apiService.js';
 const api = new ApiServer();
@@ -26,4 +32,3 @@ const api = new ApiServer();
 // function onError(e) {
 //   console.dir(e);
 // }
-
