@@ -13,7 +13,6 @@
     url('../../src/images/lib-mobile.jpg');
 }
 
-
 .logo-text {
   display: none;
   opacity: 0;
@@ -83,8 +82,8 @@
   background: transparent;
   border: none;
   border-bottom: .5px solid #fff;
+  border-bottom: 0.5px solid #fff;
 }
-
 
 .search-form-input::placeholder {
   color: rgb(255, 255, 255);
@@ -143,7 +142,6 @@
   }
 }
 
-
 // =============
 
 .button {
@@ -163,8 +161,3 @@
   background-color: #ff6b01;
   border: none;
 }
-
-
-
-
-
