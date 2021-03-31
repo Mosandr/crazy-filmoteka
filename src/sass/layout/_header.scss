@@ -31,7 +31,6 @@
 
 .site-nav-link {
   display: flex;
-  gap: 25px;
   align-items: flex-end;
 }
 
@@ -40,6 +39,10 @@
   font-weight: 500;
   line-height: 14px;
   color: inherit;
+}
+
+.site-nav-link li:not(:last-child) {
+  margin-right: 39px;
 }
 
 .current {
@@ -71,26 +74,38 @@
 
 .search-form-input {
   // display: block;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
   width: 100%;
   max-width: 336px;
-  height: 20px;
-  margin: 38px auto 22px;
-  padding: 10px;
+  height: 20px !important;
+  margin: 38px 0 0 22px !important;
   outline: none;
-  font-size: inherit;
-  line-height: inherit;
+  font-size: 14px !important;
+  line-height: 16px;
   color: #fff;
   background: transparent;
   border: none;
-  border-bottom: .5px solid #fff;
+  border-bottom: .5px solid #fff !important;
 }
 
+.search-form:focus, .search-form-input::placeholder {
+  color: $accent-color;
+}
+.search-form-input:focus, .search-form-input:not(:placeholder-shown) {
+  color: #fff;
+}
 
-.search-form-input::placeholder {
-  color: rgb(255, 255, 255);
-  background-image: url(../images/input-search.svg);
-  background-repeat: no-repeat;
-  background-position-x: right;
+// .search-form-input::placeholder {
+//   color: rgb(255, 255, 255);
+//   // background-image: url(../images/input-search.svg);
+//   background-repeat: no-repeat;
+//   background-position-x: right;
+// }
+
+.input-search-svg {
+  background: #000000;
 }
 
 .search-form-input-error {
@@ -100,8 +115,11 @@
 .header-button {
   display: flex;
   justify-content: center;
-  gap: 15px;
   margin-top: 46px;
+
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
 }
 
 .button.is-hidden {
@@ -126,9 +144,6 @@
   .page-header.lib {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/lib-tablet.jpg');
-  }
-  .site-nav-link {
-    gap: 39px;
   }
 }
 
