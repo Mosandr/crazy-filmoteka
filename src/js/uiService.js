@@ -29,6 +29,8 @@ export default class UiService {
     const footer = new Footer();
     header.init();
     footer.init();
+    this.showPopularFilms();
+
     // вешаем слушатели на кнопку поиска
     // вешаем слушатели на кнопки навигации
     // при нажатии на кнопку MyLibrary - вешаем слушатели на кнопки Watch и Queue
@@ -49,6 +51,14 @@ export default class UiService {
   onWatchedBtnClick(event) {}
 
   onQueueBtnClick(event) {}
+
+  async showPopularFilms(page = 1) {
+    try {
+      const data = await api.fetchPopularFilms(page);
+      const movieGallery = new MovieGallery();
+      movieGallery.render(data.results);
+    } catch (e) {}
+  }
 }
 
 /* API TEST*/

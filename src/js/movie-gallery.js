@@ -5,5 +5,11 @@ export default class MovieGallery {
     this.galleryRef = document.querySelector('[data-js="movie-gallery"]');
   }
 
-  render(MoviesList) {}
+  render(moviesList) {
+    const markup = moviesList.reduce(
+      (acc, item) => acc + movieCardTemplate(item),
+      '',
+    );
+    this.galleryRef.insertAdjacentHTML('afterbegin', markup);
+  }
 }
