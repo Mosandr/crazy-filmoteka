@@ -8,25 +8,30 @@
         <span class="logo-text">Filmoteka</span>
       </a>
       <ul class="site-nav-link list">
-        <li  data-js="home-btn" class="item home-js current">
-          <a href=""
+        <li  data-js="home-btn" class="item current">
+          <a
             ><span>HOME</span>
         </li>
-        <li data-js="lib-btn" class="item lib-js">
-          <a href=""
+        <li data-js="lib-btn" class="item">
+          <a
             ><span>MY LIBRARY</span>
         </li>
       </ul>
     </nav>
 
     <form  data-js="search-form" class="search-form" id="search-form">
-      <input
+    <input
         class="search-form-input"
         type="text"
         name="query"
         autocomplete="off"
         placeholder="Поиск фильмов"
       />
+      <button type="button">
+        <svg class="input-search-svg" width="10px" height="10px" alt="input-search">
+          <use href="../images/sprite.svg#input-search"></use>
+        </svg>
+      </button>
     </form>
 
     <div class="header-button">

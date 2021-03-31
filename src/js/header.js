@@ -34,6 +34,8 @@ export default class Header {
     this.refs.buttonQueue.classList.remove('is-hidden');
     this.refs.buttonWatch.classList.remove('is-hidden');
     this.refs.headerBackground.classList.add('lib');
+    this.initLibraryButtons();
+    this.onWatchedClick();
   }
 
   onHomeLinkClick(event) {
@@ -43,5 +45,38 @@ export default class Header {
     this.refs.buttonQueue.classList.add('is-hidden');
     this.refs.buttonWatch.classList.add('is-hidden');
     this.refs.headerBackground.classList.remove('lib');
+    this.disabelLibraryButtons();
+  }
+
+  initLibraryButtons() {
+    this.refs.buttonWatch.addEventListener(
+      'click',
+      this.onWatchedClick.bind(this),
+    );
+    this.refs.buttonQueue.addEventListener(
+      'click',
+      this.onQueueClick.bind(this),
+    );
+  }
+
+  onWatchedClick() {
+    this.refs.buttonWatch.classList.add('is-active');
+    this.refs.buttonQueue.classList.remove('is-active');
+  }
+
+  onQueueClick() {
+    this.refs.buttonQueue.classList.add('is-active');
+    this.refs.buttonWatch.classList.remove('is-active');
+  }
+
+  disabelLibraryButtons() {
+    this.refs.buttonQueue.removeEventListener(
+      'click',
+      this.onWatchedClick.bind(this),
+    );
+    this.refs.buttonWatch.removeEventListener(
+      'click',
+      this.onQueueClick.bind(this),
+    );
   }
 }
