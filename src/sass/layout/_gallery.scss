@@ -1,0 +1,20 @@
+.gallery__list {
+  @media (min-width: $tablet) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: -15px;
+  }
+}
+
+.gallery__item {
+  @media (min-width: $tablet) {
+    margin: 15px;
+    flex-basis: calc((100% - 60px) / 2);
+  }
+
+  @media (min-width: $desktop) {
+    margin: 15px;
+    flex-basis: calc((100% - 90px) / 3);
+  }
+}

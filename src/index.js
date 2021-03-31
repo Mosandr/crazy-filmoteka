@@ -1,7 +1,6 @@
 import './sass/styles.scss';
+import UiService from './js/uiService';
 import './js/auth.js';
-
-
 import header from './partials/header.html';
 import footer from './partials/footer.html';
 
@@ -10,20 +9,6 @@ const bodyRef = document.querySelector('BODY');
 bodyRef.insertAdjacentHTML('afterbegin', header);
 bodyRef.insertAdjacentHTML('beforeend', footer);
 
-import ApiServer from './js/apiService.js';
-const api = new ApiServer();
+const ui = new UiService();
 
-/* API TEST*/
-// // api.fetchPopularFilms().then(onSucces).catch(onError);
-// // api.fetchFilmsOnSearch('green mile', 1).then(onSucces).catch(onError);
-
-// api.fetchFilmById(497).then(onSucces).catch(onError);
-
-// function onSucces(data) {
-//   console.dir(data);
-// }
-
-// function onError(e) {
-//   console.dir(e);
-// }
-
+ui.init();
