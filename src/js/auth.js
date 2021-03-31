@@ -8,11 +8,11 @@ import 'firebase/auth';
 import 'firebase/firestore';
 
 document.addEventListener('DOMContentLoaded', function () {
-  var elems = document.querySelectorAll('.modal');
+  const elems = document.querySelectorAll('.modal');
   M.Modal.init(elems);
 });
 
-var app = firebase.initializeApp({
+firebase.initializeApp({
   apiKey: 'AIzaSyDckuyQARNfaPXRs7Jiz4Xgr28aczvsv5w',
   authDomain: 'crazy-filmoteka.firebaseapp.com',
   projectId: 'crazy-filmoteka',
@@ -22,32 +22,6 @@ var app = firebase.initializeApp({
 });
 const auth = firebase.auth();
 const db = firebase.firestore();
-// DOM elements
-// const guideList = document.querySelector('.guides');
-
-// setup guides
-// const setupGuides = (data) => {
-
-//   let html = '';
-//   data.forEach(doc => {
-//     const guide = doc.data();
-//     const li = `
-//       <li>
-//         <div class="collapsible-header grey lighten-4"> ${guide.title} </div>
-//         <div class="collapsible-body white"> ${guide.content} </div>
-//       </li>
-//     `;
-//     html += li;
-//   });
-//   guideList.innerHTML = html
-
-// };
-// get data from firebase
-// db.collection('guides')
-//   .get()
-//   .then(snapshot => {
-//     setupGuides(snapshot.docs);
-//   });
 
 // Sign up
 const signupForm = document.querySelector('#signup-form');
@@ -57,12 +31,24 @@ signupForm.addEventListener('submit', e => {
 
   const email = signupForm['signup-email'].value;
   const password = signupForm['signup-password'].value;
-  auth.createUserWithEmailAndPassword(email, password).then(cred => {
-    console.log(cred.user);
-    const modal = document.querySelector('#modal-signup');
-    M.Modal.getInstance(modal).close();
-    signupForm.reset();
-  });
+  auth
+    .createUserWithEmailAndPassword(email, password)
+    .then(cred => {
+      //creating user collection
+      return db.collection('users').doc(cred.user.uid).set({
+        watched: [],
+        queue: [],
+      });
+    })
+    .then(() => {
+      const modal = document.querySelector('#modal-signup');
+      M.Modal.getInstance(modal).close();
+      signupForm.reset();
+      signupForm.querySelector('.error').innerHTML = '';
+    })
+    .catch(err => {
+      signupForm.querySelector('.error').innerHTML = err.message;
+    });
 });
 
 // logout
@@ -82,13 +68,21 @@ loginForm.addEventListener('submit', e => {
   const password = loginForm['login-password'].value;
 
   // log the user in
-  auth.signInWithEmailAndPassword(email, password).then(() => {
-    // close the signup modal & reset form
-    const modal = document.querySelector('#modal-login');
-    M.Modal.getInstance(modal).close();
-    loginForm.reset();
-  });
+  auth
+    .signInWithEmailAndPassword(email, password)
+    .then(() => {
+      // close the signup modal & reset form
+      const modal = document.querySelector('#modal-login');
+      M.Modal.getInstance(modal).close();
+      loginForm.reset();
+      loginForm.querySelector('.error').innerHTML = '';
+    })
+    .catch(err => {
+      loginForm.querySelector('.error').innerHTML = err.message;
+    });
 });
+
+// close modal-login while opening modal-signup
 
 const signUpBtn = document.querySelector('[data-target="modal-signup"]');
 signUpBtn.addEventListener('click', () => {
@@ -96,17 +90,24 @@ signUpBtn.addEventListener('click', () => {
   M.Modal.getInstance(modal).close();
 });
 
-//hide button
+//hide button login/logout
 const loggedOutLink = document.querySelector('.logged-out');
 const loggedInLink = document.querySelector('.logged-in');
 
 const setupUI = user => {
   if (user) {
+    //get info from user's collection
+    db.collection('users')
+      .doc(user.uid)
+      .get()
+      .then(doc => {
+        console.log(doc.data().watched);
+        console.log(doc.data().queue);
+      });
     // toggle user UI elements
     loggedInLink.classList.add('is-hidden');
     loggedOutLink.classList.remove('is-hidden');
   } else {
-    // toggle user elements
     loggedInLink.classList.remove('is-hidden');
     loggedOutLink.classList.add('is-hidden');
   }
@@ -115,10 +116,14 @@ const setupUI = user => {
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
   if (user) {
-    console.log('user logged in: ', user);
     setupUI(user);
   } else {
-    console.log('user logged out');
     setupUI();
   }
 });
+
+// import ApiServer from './apiService.js';
+// const apiServ = new ApiServer();
+// const f = apiServ.fetchPopularFilms().then(data => {
+//   console.log(data.results);
+// });
