@@ -13,7 +13,6 @@
     url('../../src/images/lib-mobile.jpg');
 }
 
-
 .logo-text {
   display: none;
   opacity: 0;
@@ -87,25 +86,6 @@
   color: #fff;
   background: transparent;
   border: none;
-  border-bottom: .5px solid #fff !important;
-}
-
-.search-form:focus, .search-form-input::placeholder {
-  color: $accent-color;
-}
-.search-form-input:focus, .search-form-input:not(:placeholder-shown) {
-  color: #fff;
-}
-
-// .search-form-input::placeholder {
-//   color: rgb(255, 255, 255);
-//   // background-image: url(../images/input-search.svg);
-//   background-repeat: no-repeat;
-//   background-position-x: right;
-// }
-
-.input-search-svg {
-  background: #000000;
 }
 
 .search-form-input-error {
@@ -157,11 +137,3 @@
       url('../../src/images/lib-pc.jpg');
   }
 }
-
-
-
-
-
-
-
-
