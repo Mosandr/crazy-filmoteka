@@ -5,6 +5,7 @@ const apiSettings = {
     tranding: '/trending/movie/week',
     search: '/search/movie',
     movie: '/movie/',
+    genres: '/genre/movie/list',
   },
 };
 

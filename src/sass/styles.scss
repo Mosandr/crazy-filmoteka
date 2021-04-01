@@ -7,7 +7,7 @@
 @import 'materialize-css/sass/components/_color-classes.scss';
 @import 'materialize-css/sass/components/_variables.scss';
 @import 'materialize-css/sass/components/_modal.scss';
-@import 'materialize-css/sass/components/_buttons.scss';
+// @import 'materialize-css/sass/components/_buttons.scss';
 @import 'materialize-css/sass/components/forms/_forms.scss';
 @import 'materialize-css/sass/components/_global.scss';
 @import 'materialize-css/sass/components/_preloader.scss';
@@ -29,4 +29,5 @@
 @import './layout/pagination-bar';
 @import './layout/film-card-modal';
 @import './layout/footer';
-@import './layout/preloader-backdrop.scss';
+@import './layout/preloader-backdrop';
+

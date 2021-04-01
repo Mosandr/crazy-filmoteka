@@ -104,9 +104,11 @@
   }
 }
 
-
 .search-form-input-error {
   color: $accent-color;
+  
+.search-form__error {
+  color: #ff001b;
 }
 
 .input-search-btn {
@@ -177,4 +179,7 @@ fill: $accent-color;
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../../src/images/lib-pc.jpg');
   }
+}
+.material-icons {
+  color: $title-dark-theme-color;
 }

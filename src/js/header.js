@@ -7,7 +7,7 @@ export default class Header {
     const refs = {
       linkHome: document.querySelector('[data-js="home-btn"]'),
       linkLib: document.querySelector('[data-js="lib-btn"]'),
-      inputForm: document.querySelector('[data-js="search-form"]'),
+      searcForm: document.querySelector('[data-js="search-form"]'),
       buttonWatch: document.querySelector('[data-js="button-watch"]'),
       buttonQueue: document.querySelector('[data-js="button-queue"]'),
       headerBackground: document.querySelector('[data-js="page-header"]'),
@@ -30,7 +30,7 @@ export default class Header {
   onMyLibraryLinkClick(event) {
     this.refs.linkHome.classList.remove('current');
     this.refs.linkLib.classList.add('current');
-    this.refs.inputForm.classList.add('is-hidden');
+    this.refs.searcForm.classList.add('is-hidden');
     this.refs.buttonQueue.classList.remove('is-hidden');
     this.refs.buttonWatch.classList.remove('is-hidden');
     this.refs.headerBackground.classList.add('lib');
@@ -41,7 +41,7 @@ export default class Header {
   onHomeLinkClick(event) {
     this.refs.linkHome.classList.add('current');
     this.refs.linkLib.classList.remove('current');
-    this.refs.inputForm.classList.remove('is-hidden');
+    this.refs.searcForm.classList.remove('is-hidden');
     this.refs.buttonQueue.classList.add('is-hidden');
     this.refs.buttonWatch.classList.add('is-hidden');
     this.refs.headerBackground.classList.remove('lib');
