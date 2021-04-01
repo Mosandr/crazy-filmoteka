@@ -1,5 +1,6 @@
 <header data-js="page-header" class="page-header">
   <div class="container">
+
       <nav class="site-nav">
       <a class="logo" href="./index.html">
         <svg class=" logo-svg" width="24px" height="24px" alt="logo">
@@ -31,19 +32,20 @@
        </p>
      </div>
     <form  data-js="search-form" class="search-form" id="search-form">
-    <input
-        class="search-form-input"
-        type="text"
-        name="query"
-        autocomplete="off"
-        placeholder="Поиск фильмов"
-      />
-      <button type="button">
-        <svg class="input-search-svg" width="10px" height="10px" alt="input-search">
-          <use href="../images/sprite.svg#input-search"></use>
-        </svg>
-      </button>
-      <p class="search-form__error"></p>
+        <label class="search-form-label">
+          <input
+          class="search-form-input"
+          type="text"
+          name="query"
+          autocomplete="off"
+          placeholder="Поиск фильмов"
+        />
+        <button type="button" class="input-search-btn">
+          <svg class="input-search-svg" width="12px" height="12px" alt="input-search">
+            <use class="input-search-svg-icon" href="../images/sprite.svg#input-search"></use>
+          </svg>
+        </button>
+        </label>
     </form>
 
     
