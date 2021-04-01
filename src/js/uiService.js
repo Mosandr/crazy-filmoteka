@@ -48,7 +48,7 @@ export default class UiService {
     errorRef.textContent = '';
     try {
       const data = await api.fetchFilmsOnSearch(query);
-      const genresData = await api.fetchGenresList();
+      const genresData = await api.fetchGenresList();      
       const movieList = this.prepareDataForMarkup(
         data.results,
         genresData.genres,
