@@ -6,6 +6,7 @@
 //  - удалить из списка очереди фильмов
 //  - получить список просмотреных фильмов
 //  - получить список очереди фильмов
+
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
