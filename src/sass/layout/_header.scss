@@ -24,7 +24,6 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-
   color: #ffffff;
 }
 
@@ -38,15 +37,24 @@
   font-weight: 500;
   line-height: 14px;
   color: inherit;
+
+  &:focus,&:hover {
+    color: $accent-color;
+    }
 }
 
-.site-nav-link li:not(:last-child) {
-  margin-right: 39px;
+.site-nav-link li {
+  cursor: pointer;
+  
+  &:not(:last-child) {
+    margin-right: 39px;
+  }
 }
 
 .current {
   position: relative;
 }
+
 
 .current::after {
   content: '';
@@ -56,7 +64,7 @@
   left: 0;
   bottom: -2px;
 
-  background: #ff6b08;
+  background: $accent-color;
   border-radius: 2px;
 }
 
@@ -71,34 +79,67 @@
   display: none;
 }
 
+.search-form-label {
+  position: relative;
+
+}
+
 .search-form-input {
   // display: block;
   font-family: Roboto;
-  font-style: normal;
   font-weight: normal;
   width: 100%;
   max-width: 336px;
   height: 20px !important;
   margin: 38px 0 0 22px !important;
-  outline: none;
   font-size: 14px !important;
   line-height: 16px;
-  color: #fff;
+  color: #ffffff;
   background: transparent;
   border: none;
+  outline: none;
+
+  &:focus, &:hover {
+    color: $accent-color;
+  }
 }
 
+
 .search-form-input-error {
-  color: #ff001b;
+  color: $accent-color;
 }
+
+.input-search-btn {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  right: -4px;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.search-form-input.text:focus ~ .input-search-svg,
+.search-form-input.text:hover ~ .input-search-svg {
+fill: $accent-color;
+}
+
+
 
 .header-button {
   display: flex;
   justify-content: center;
   margin-top: 46px;
+}
 
-  &:not(:last-child) {
-    margin-right: 15px;
+.header-button button {
+  cursor: pointer;
+
+&:not(:last-child){
+  margin-right: 15px;
+}
+&:focus,&:hover {
+  border: 2px solid rgba(255, 107, 8, 0.8);
   }
 }
 
