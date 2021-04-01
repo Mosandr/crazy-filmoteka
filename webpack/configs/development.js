@@ -33,6 +33,7 @@ module.exports = env => ({
     // }),
     new HtmlWebpackPlugin({
       template: './index.html',
+      favicon: './images/logo.png',
     }),
   ],
   devServer: {
