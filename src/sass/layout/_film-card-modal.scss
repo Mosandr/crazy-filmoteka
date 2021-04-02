@@ -1,69 +1,66 @@
-.modal__film__backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-  
-    padding: 50px 30px;
-    overflow-y: scroll;
-  }
-  
-  .for__modal.is-open .modal__film__backdrop {
-    display: block;
-  }
-  
-  .modal__film__backdrop {
-    display: none;
-  }
-  
-  .modal__film__card {
-    padding: 20px;
-    max-width: 280px;
-    max-height: 958px;
-    width: 100%;
-    background-color: #fff;
-  
-    @media (min-width: 320px) {
-      position: absolute;
-      top: 20%;
-      left: 50%;
-      transform: translate(-50%, -10%);
-    }
-  }
-  
-  .data__modal__film-close-btn {
-    display: inline-flex;
-    justify-content: flex-end;
-    border: none;
-    background-color: #fff;
-  }
+// .modal__film__backdrop {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background-color: rgba(0, 0, 0, 0.3);
 
-  .modal__btns__down {
-    display: inline-flex;
-    justify-content: space-between;
-  }
-  
-  .data__modal__film-add-to-watched {
-    background-color: #ff6b01;
-    width: 113px;
-    height: 44px;
-    border-radius: 5px;
-    border: none;
-    margin-right: 15px;
-    color: #fff;
-    font-size: 12px;
-  }
-  
-  .data__modal__film-add-to-queue {
-    background-color: #fff;
-    width: 113px;
-    height: 44px;
-    border-radius: 5px;
-    border-color: black;
-    font-size: 12px;
-  }
+//     padding: 50px 30px;
+//     overflow-y: scroll;
+//   }
 
+// .for__modal.is-open .modal__film__backdrop {
+//   display: block;
+// }
 
-  
+// .modal__film__backdrop {
+//   display: none;
+// }
+
+// .modal__film__card {
+//   padding: 20px;
+//   max-width: 280px;
+//   max-height: 958px;
+//   width: 100%;
+//   background-color: #fff;
+
+//   @media (min-width: 320px) {
+//     position: absolute;
+//     top: 20%;
+//     left: 50%;
+//     transform: translate(-50%, -10%);
+//   }
+// }
+
+// .data__modal__film-close-btn {
+//   display: inline-flex;
+//   justify-content: flex-end;
+//   border: none;
+//   background-color: #fff;
+// }
+
+// .modal__btns__down {
+//   display: inline-flex;
+//   justify-content: space-between;
+// }
+
+.data__modal__film-add-to-watched {
+  background-color: #ff6b01;
+  width: 113px;
+  height: 44px;
+  border-radius: 5px;
+  border: none;
+  margin-right: 15px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.data__modal__film-add-to-queue {
+  background-color: #fff;
+  width: 113px;
+  height: 44px;
+  border-radius: 5px;
+  border-color: black;
+  font-size: 12px;
+}

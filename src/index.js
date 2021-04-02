@@ -1,12 +1,10 @@
 import './sass/styles.scss';
 import UiService from './js/uiService';
-// import './js/auth.js';
 import header from './partials/header.html';
 import footer from './partials/footer.html';
 import auth from './partials/authModal.html';
 import Server from './js/serviceDB.js';
 import Auth from './js/auth.js';
-// import initFirebase from './js/auth.js';
 import initModal from './js/initModal.js';
 
 const bodyRef = document.querySelector('BODY');
