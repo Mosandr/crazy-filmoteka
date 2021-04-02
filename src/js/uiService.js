@@ -27,12 +27,18 @@ export default class UiService {
   init() {
     const header = new Header();
     const footer = new Footer();
+
     header.init();
     footer.init();
     this.showPopularFilms();
     header.refs.searcForm.addEventListener(
       'click',
       this.onSearchBtnClick.bind(this),
+    );
+
+    this.refs.movieGallery.addEventListener(
+      'click',
+      this.onMovieItemClick.bind(this),
     );
 
     // вешаем слушатели на кнопки навигации
@@ -48,7 +54,7 @@ export default class UiService {
     errorRef.textContent = '';
     try {
       const data = await api.fetchFilmsOnSearch(query);
-      const genresData = await api.fetchGenresList();      
+      const genresData = await api.fetchGenresList();
       const movieList = this.prepareDataForMarkup(
         data.results,
         genresData.genres,
@@ -67,6 +73,19 @@ export default class UiService {
     //api.fetchFilmsOnSearch(query)
     //обрабатываем данные и собираем их в масив объектов - movieList
     //рисуем галерею фильмов метод класса MovieGallery.render(movieList)
+  }
+
+  async onMovieItemClick(event) {
+    if (event.target.nodeName === 'UL') return;
+    const movieId = event.target.parentNode.dataset.id;
+    console.log(movieId);
+    try {
+      const data = await api.fetchFilmById(movieId);
+      // тут ренедрим модалку фильма по данным data
+      console.log(data);
+    } catch (e) {
+      console.log('error');
+    }
   }
 
   onHomeBtnClick(event) {}
