@@ -53,6 +53,7 @@
     "core-js": "^3.6.5",
     "firebase": "^8.3.1",
     "handlebars": "^4.7.6",
-    "materialize-css": "^1.0.0-rc.2"
+    "materialize-css": "^1.0.0-rc.2",
+    "pagination": "^0.4.6"
   }
 }
