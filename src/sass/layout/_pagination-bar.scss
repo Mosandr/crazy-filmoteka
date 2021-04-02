@@ -1,0 +1,11 @@
+#paging {
+  padding-top: 40px;
+}
+
+.paginator {
+  text-align: center;
+
+  &-current {
+    color: $accent-color;
+  }
+}
