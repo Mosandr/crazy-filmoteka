@@ -3,17 +3,16 @@ export default class Preloader {
         this.refs = this.getRefs();
     }
     getRefs() {
-        const refs = {
-            backdropContainer: document.querySelector('.backdrop-container')
-        };
-        return refs;
-        
+    const refs = {
+      preloaderBackdrop: document.querySelector('.backdrop-container')
+    }
+
+    return refs;
     }
     openPreloader() {
-        this.refs.backdropContainer.classList.remove('is-hidden');
+        this.refs.preloaderBackdrop.classList.remove('.is-hidden');
     }
-closePreloader(){
-    this.refs.backdropContainer.classList.add('is-hidden');
+    closePreloader() {
+        this.refs.preloaderBackdrop.classList.add('.is-hidden');
     }
-    
 }

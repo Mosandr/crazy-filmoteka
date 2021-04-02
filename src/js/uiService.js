@@ -7,6 +7,9 @@
 import Header from './header';
 import Footer from './footer';
 import MovieGallery from './movie-gallery';
+import MovieCardModal from './movieCardModal';
+import Paginator from './paginator';
+
 import ApiService from './apiService';
 const api = new ApiService();
 
@@ -24,15 +27,32 @@ export default class UiService {
     return refs;
   }
 
-  init() {
+  getCurrentPage() {
+    const url = location.href;
+
+    if (!url.includes('page=')) return 1;
+
+    let index = url.indexOf('page=') + String('page=').length;
+
+    return url.slice(index);
+  }
+
+  async init() {
     const header = new Header();
     const footer = new Footer();
+
     header.init();
     footer.init();
-    this.showPopularFilms();
+
+    this.showPopularFilms(this.getCurrentPage());
     header.refs.searcForm.addEventListener(
       'click',
       this.onSearchBtnClick.bind(this),
+    );
+
+    this.refs.movieGallery.addEventListener(
+      'click',
+      this.onMovieItemClick.bind(this),
     );
 
     // вешаем слушатели на кнопки навигации
@@ -69,6 +89,20 @@ export default class UiService {
     //рисуем галерею фильмов метод класса MovieGallery.render(movieList)
   }
 
+  async onMovieItemClick(event) {
+    if (event.target.nodeName === 'UL') return;
+    const movieId = event.target.parentNode.dataset.id;
+    console.log(movieId);
+    try {
+      const data = await api.fetchFilmById(movieId);
+      // тут ренедрим модалку фильма по данным data
+      const movieModal = new MovieCardModal();
+      movieModal.renderMovieModal(data);
+    } catch (e) {
+      console.log('error');
+    }
+  }
+
   onHomeBtnClick(event) {}
 
   onMyLibraryBtnClick(event) {}
@@ -87,6 +121,9 @@ export default class UiService {
       );
       const movieGallery = new MovieGallery();
       movieGallery.render(movieList);
+
+      const paginator = new Paginator();
+      paginator.create(this.getCurrentPage(), data.total_results);
     } catch (e) {
       console.log('error');
     }

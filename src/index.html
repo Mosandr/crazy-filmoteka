@@ -19,23 +19,30 @@
     <main>
       <section class="gallery">
         <div class="container">
-          <ul class="gallery__list" data-js="movie-gallery"></ul>
+          <ul
+            class="gallery__list"
+            data-js="movie-gallery"
+            data-totalItems="0"
+          ></ul>
+          <div id="paging"></div>
         </div>
-      </section>  
+      </section>
     </main>
     <!-- <footer></footer> -->
-    <div class="backdrop-container is-hidden"><div class="preloader-wrapper big active">
-      <div class="spinner-layer spinner-yellow-only">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div>
-        <div class="gap-patch">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-clipper right">
-          <div class="circle"></div>
+    <div class="backdrop-container is-hidden">
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-yellow-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
         </div>
       </div>
-    </div></div>
+    </div>
   </body>
 </html>
