@@ -7,6 +7,8 @@
 import Header from './header';
 import Footer from './footer';
 import MovieGallery from './movie-gallery';
+import MovieCardModal from './movieCardModal';
+
 import ApiService from './apiService';
 const api = new ApiService();
 
@@ -82,6 +84,8 @@ export default class UiService {
     try {
       const data = await api.fetchFilmById(movieId);
       // тут ренедрим модалку фильма по данным data
+      const movieModal = new MovieCardModal();
+      movieModal.renderMovieModal(data);
       console.log(data);
     } catch (e) {
       console.log('error');
