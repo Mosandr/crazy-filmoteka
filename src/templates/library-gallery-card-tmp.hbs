@@ -1,0 +1,8 @@
+{{#each this}}<li class="gallery__item modal-trigger" data-target="modal-card" data-id="{{id}}">
+    <img class="gallery__img" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}} movie poster">
+    <h3 class="gallery__movie-title">{{title}}</h3>
+    <p class="gallery__movie-genre">{{#each genres}}{{name}} {{/each}} | {{year}} <span
+            class="gallery__movie-rating">{{vote_average}}</span>
+    </p>
+</li>
+{{/each}}
