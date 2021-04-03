@@ -5,7 +5,7 @@
   <li>Vote / Votes_______{{vote_average}}/{{vote_count}} </li>
   <li>Popularity_________{{popularity}}</li>
   <li>Original Title______{{original_title}}</li>
-  <li>Genre_____________</li>
+  <li>Genre_____________{{#each genres}}{{name}} {{/each}}</li>
 </ul>
 <h4 class="modal__gallery__movie-about">ABOUT</h4>
 <p>{{overview}}</p>
