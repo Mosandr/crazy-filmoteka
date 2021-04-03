@@ -7,6 +7,7 @@ import Server from './js/serviceDB.js';
 import Auth from './js/auth.js';
 import initModal from './js/initModal.js';
 import Preloader from './js/preloader-backdrop';
+import ModalCreate from './js/initCardModal';
 
 const bodyRef = document.querySelector('BODY');
 
@@ -17,10 +18,12 @@ bodyRef.insertAdjacentHTML('afterbegin', auth);
 const ui = new UiService();
 const server = new Server();
 const authorization = new Auth();
+const modalCreate = new ModalCreate();
 
 ui.init();
 
 initModal();
+modalCreate.modalTeamCross();
 
 authorization.init();
 

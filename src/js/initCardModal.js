@@ -5,6 +5,9 @@ export default class ModalCreate {
     this.modalInsert = document.querySelector('.card-data-insert');
     this.closeBtn = document.querySelector('.data__modal__film-close-btn');
     this.modal = document.querySelector('#modal-card');
+    this.teamLink = document.querySelector('[data-js="team-link"]');
+    this.teamCloseBtn = document.querySelector('.team-close-btn');
+    this.modalTeam = document.querySelector('#modal-team');
   }
 
   render(modalInsertObj) {
@@ -23,5 +26,10 @@ export default class ModalCreate {
   }
   init() {
     this.closeBtn.addEventListener('click', this.closeByCross.bind(this));
+  }
+  modalTeamCross() {
+    this.teamCloseBtn.addEventListener('click', () => {
+      M.Modal.getInstance(this.modalTeam).close();
+    });
   }
 }

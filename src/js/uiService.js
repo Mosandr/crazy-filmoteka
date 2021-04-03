@@ -53,7 +53,7 @@ export default class UiService {
     const header = new Header();
     const footer = new Footer();
     header.init();
-    footer.init();
+    // footer.init();
 
     if (this.isMyLibraryPageOpen()) {
       header.onMyLibraryLinkClick();
@@ -125,7 +125,6 @@ export default class UiService {
       this.refs.queueBtn.dataset.ob = JSON.stringify(data);
 
       // тут ренедрим модалку фильма по данным data
-
       const modalCreate = new ModalCreate();
       modalCreate.render(data);
       modalCreate.init();
