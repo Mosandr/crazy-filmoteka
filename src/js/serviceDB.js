@@ -6,7 +6,7 @@
 //  - удалить из списка очереди фильмов
 //  - получить список просмотреных фильмов
 //  - получить список очереди фильмов
-
+import libraryGalleryCardTmp from '../templates/library-gallery-card-tmp.hbs';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
@@ -26,6 +26,8 @@ export default class Server {
     this.queueBtn = document.querySelector('.data__modal__film-add-to-queue');
     this.watchBtnHeader = document.querySelector('.watch');
     this.queueBtnHeader = document.querySelector('.queue');
+    this.galleryListRef = document.querySelector('[data-js="movie-gallery"]');
+    this.libraryBtn = document.querySelector('[data-js="lib-btn"]');
   }
 
   async getActualQueueLists(user) {
@@ -33,19 +35,31 @@ export default class Server {
     const list = await this.db.collection('users').doc(user.uid).get();
     const actualListQueue = list.data().queue;
     console.log(actualListQueue);
+    this.queueBtnHeader.addEventListener(
+      'click',
+      this.renderGalleryOnBtnClick.bind(this, actualListQueue),
+    );
   }
   async getActualWatchedLists(user) {
     //get info from user's collection
     const list = await this.db.collection('users').doc(user.uid).get();
     const actualListWatched = list.data().watched;
     console.log(actualListWatched);
-    // this.watchBtnHeader.addEventListener('click', () => {
-    //   const galleryListRef = document.querySelector('[data-js="movie-gallery"]');
-    //   galleryListRef.insertAdjacentHTML(
-    //     'afterbegin',
-    //     watchedTemplate(actualListWatched),
-    //   );
-    // });
+    this.watchBtnHeader.addEventListener(
+      'click',
+      this.renderGalleryOnBtnClick.bind(this, actualListWatched),
+    );
+    this.libraryBtn.addEventListener(
+      'click',
+      this.renderGalleryOnBtnClick.bind(this, actualListWatched),
+    );
+  }
+  renderGalleryOnBtnClick(actualItemsList) {
+    this.galleryListRef.innerHTML = '';
+    this.galleryListRef.insertAdjacentHTML(
+      'afterbegin',
+      libraryGalleryCardTmp(actualItemsList),
+    );
   }
   async addItemsToWattchedList(user) {
     const watchedList = await this.db.collection('users').doc(user.uid).get();
