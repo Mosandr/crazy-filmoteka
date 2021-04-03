@@ -54,6 +54,7 @@ export default class Server {
       this.renderGalleryOnBtnClick.bind(this, actualListWatched),
     );
   }
+
   renderGalleryOnBtnClick(actualItemsList) {
     this.galleryListRef.innerHTML = '';
     this.galleryListRef.insertAdjacentHTML(

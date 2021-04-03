@@ -43,14 +43,26 @@ export default class UiService {
     return url.slice(index);
   }
 
+  isMyLibraryPageOpen() {
+    const url = location.href;
+    if (url.includes('my-library')) return true;
+    return false;
+  }
+
   async init() {
     const header = new Header();
     const footer = new Footer();
-
     header.init();
     footer.init();
 
+    if (this.isMyLibraryPageOpen()) {
+      header.onMyLibraryLinkClick();
+      // рисуем просмотренные фильмы в галерею
+      return;
+    }
+
     this.showPopularFilms(this.getCurrentPage());
+
     header.refs.searcForm.addEventListener(
       'click',
       this.onSearchBtnClick.bind(this),
@@ -60,6 +72,7 @@ export default class UiService {
       'click',
       this.onMovieItemClick.bind(this),
     );
+
     this.refs.homeBtn.addEventListener(
       'click',
       this.showPopularFilms.bind(this, 1),
@@ -125,14 +138,6 @@ export default class UiService {
     }
   }
 
-  onHomeBtnClick(event) {}
-
-  onMyLibraryBtnClick(event) {}
-
-  onWatchedBtnClick(event) {}
-
-  onQueueBtnClick(event) {}
-
   async showPopularFilms(page = 1) {
     try {
       const data = await api.fetchPopularFilms(page);
@@ -141,11 +146,12 @@ export default class UiService {
         data.results,
         genresData.genres,
       );
+
       const movieGallery = new MovieGallery();
       movieGallery.render(movieList);
 
       const paginator = new Paginator();
-      paginator.create(this.getCurrentPage(), data.total_results);
+      paginator.create(this.getCurrentPage(), data.total_results, 'home');
     } catch (e) {
       console.log('error');
     }
