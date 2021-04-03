@@ -7,8 +7,12 @@
 import Header from './header';
 import Footer from './footer';
 import MovieGallery from './movie-gallery';
-import MovieCardModal from './movieCardModal';
+
+import ModalCreate from './initCardModal';
+
+// import MovieCardModal from './movieCardModal';
 import Paginator from './paginator';
+
 
 import ApiService from './apiService';
 const api = new ApiService();
@@ -23,6 +27,8 @@ export default class UiService {
       pageHeader: document.querySelector('[data-js="page-header"]'),
       movieGallery: document.querySelector('[data-js="movie-gallery"]'),
       pageFooter: document.querySelector('[data-js="page-footer"]'),
+      watchBtn: document.querySelector('.data__modal__film-add-to-watched'),
+      queueBtn: document.querySelector('.data__modal__film-add-to-queue'),
     };
     return refs;
   }
@@ -92,14 +98,29 @@ export default class UiService {
   async onMovieItemClick(event) {
     if (event.target.nodeName === 'UL') return;
     const movieId = event.target.parentNode.dataset.id;
+    this.refs.watchBtn.dataset.id = movieId;
+    this.refs.queueBtn.dataset.id = movieId;
+    console.log(this.refs.watchBtn);
+
     console.log(movieId);
     try {
       const data = await api.fetchFilmById(movieId);
+      this.refs.watchBtn.dataset.ob = JSON.stringify(data);
+      this.refs.queueBtn.dataset.ob = JSON.stringify(data);
+      console.log(this.refs.watchBtn);
+
       // тут ренедрим модалку фильма по данным data
-      const movieModal = new MovieCardModal();
-      movieModal.renderMovieModal(data);
+
+      const modalCreate = new ModalCreate();
+      modalCreate.render(data);
+      modalCreate.init();
+      console.log(data);
+
+//       const movieModal = new MovieCardModal();
+//       movieModal.renderMovieModal(data);
+
     } catch (e) {
-      console.log('error');
+      console.log(e);
     }
   }
 
