@@ -1,3 +1,5 @@
+import initTeamModal from "./initTeamModal"
+
 export default class Footer {
   constructor() {
     this.refs = this.getRefs();
@@ -20,6 +22,20 @@ export default class Footer {
 
   onTeamLinkClick(event) {
     //open team modal
-    console.log('Now team modal must be open');
+    // console.log('Now team modal must be open');
+    
+    event.preventDefault();
+    initTeamModal();
+    modal.show();
+
+    window.addEventListener('keydown', closeModalHandler);
+
+    function closeModalHandler(e) {
+      if (e.code === 'Escape') {
+        modal.close();
+        window.removeEventListener('keydown', closeModalHandler);
+      }
+    }
+
   }
 }

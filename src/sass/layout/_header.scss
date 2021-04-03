@@ -96,6 +96,7 @@
   color: #ffffff;
   background: transparent;
   border: none;
+  border-bottom: 1px solid #ffffff;
   outline: none;
 
   &:focus,
@@ -122,9 +123,14 @@
   outline: none;
 }
 
-.search-form-input.text:focus ~ .input-search-svg,
-.search-form-input.text:hover ~ .input-search-svg {
-  fill: $accent-color;
+.input-search-svg {
+  fill: none;
+  stroke: #ffffff;
+}
+
+.search-form-input:focus ~ .input-search-svg,
+.search-form-input:hover .input-search-svg {
+  stroke: $accent-color;
 }
 
 .header-button {
