@@ -1,31 +1,12 @@
-<div class="modal__film__backdrop" data__modal__film>
-
-        <div class="modal__film__card">
-
-            <button type="button" class="data__modal__film-close-btn">X
-                <svg class="icon-cross" width="14" height="14"><use href="./images/sprite.svg#" aria-label="Кнопка закрытия модального окна"></use></svg>
-            </button>
-
-            <img class="modal__gallery__img" src="./images/Rectangle 18.jpg" alt="{{title}} movie poster">
-            <h3 class="modal__gallery__movie-title">A FISTFUL OF LEAD</h3>
-            <ul>
-              <li>Vote / Votes_______7.3 /  1260</li>
-              <li>Popularity_________100.2</li>
-              <li>Original Title______A 1st of Lead</li>
-              <li>Genre_____________Western</li>
-            </ul>
-            <h4 class="modal__gallery__movie-about">ABOUT</h4>
-            <p>Four of the West’s most infamous outlaws assemble to steal a huge stash of gold from the most corrupt settlement of the
-            gold rush towns. But not all goes to plan one is killed and the other three escapes with bags of gold hide out in the
-            abandoned gold mine where they happen across another gang of three – who themselves were planning to hit the very same
-            bank! As tensions rise, things go from bad to worse as they realise the bags of gold are filled with lead... they’ve
-            been double crossed – but by who and how?
-            </p>
-
-            <div class="modal__btns__down">
-            <button type="button" class="data__modal__film-add-to-watched">ADD TO </br> WATCHED</button>
-            <button type="button" class="data__modal__film-add-to-queue">ADD TO QUEUE</button>
-            </div>
-        </div>
-
-</div>
+{{#each this}}<img class="modal__gallery__img" src="https://image.tmdb.org/t/p/w500{{poster_path}}"
+  alt="{{title}} movie poster">
+<h3 class="modal__gallery__movie-title">{{title}}</h3>
+<ul>
+  <li>Vote / Votes_______{{vote_average}}/{{vote_count}} </li>
+  <li>Popularity_________{{popularity}}</li>
+  <li>Original Title______{{original_title}}</li>
+  <li>Genre_____________{{#each genres}}{{name}} {{/each}}</li>
+</ul>
+<h4 class="modal__gallery__movie-about">ABOUT</h4>
+<p>{{overview}}</p>
+{{/each}}

@@ -22,6 +22,10 @@ export default class Server {
   constructor() {
     this.auth = firebase.auth();
     this.db = firebase.firestore();
+    this.watchBtn = document.querySelector('.data__modal__film-add-to-watched');
+    this.queueBtn = document.querySelector('.data__modal__film-add-to-queue');
+    this.watchBtnHeader = document.querySelector('.watch');
+    this.queueBtnHeader = document.querySelector('.queue');
   }
 
   async getActualQueueLists(user) {
@@ -35,8 +39,7 @@ export default class Server {
     const list = await this.db.collection('users').doc(user.uid).get();
     const actualListWatched = list.data().watched;
     console.log(actualListWatched);
-    // const btnWatchedRef = document.querySelector('[data-js="button-watch"]');
-    // btnWatchedRef.addEventListener('click', () => {
+    // this.watchBtnHeader.addEventListener('click', () => {
     //   const galleryListRef = document.querySelector('[data-js="movie-gallery"]');
     //   galleryListRef.insertAdjacentHTML(
     //     'afterbegin',
@@ -47,19 +50,21 @@ export default class Server {
   async addItemsToWattchedList(user) {
     const watchedList = await this.db.collection('users').doc(user.uid).get();
     const newList = watchedList.data().watched;
-    newList.push({ film: 'scream' });
+    const newFilm = JSON.parse(this.watchBtn.dataset.ob);
+
+    newList.push(newFilm);
     return newList;
   }
   async addItemsToQueueList(user) {
     const queueList = await this.db.collection('users').doc(user.uid).get();
     const newList = queueList.data().queue;
+    const newFilm = JSON.parse(this.queueBtn.dataset.ob);
 
-    newList.push({ film: 'horse' });
+    newList.push(newFilm);
     return newList;
   }
   renewWatchedList(user) {
-    const watchedBtn = document.querySelector('.watched');
-    watchedBtn.addEventListener('click', e => {
+    this.watchBtn.addEventListener('click', e => {
       e.preventDefault();
 
       this.addItemsToWattchedList(user).then(data => {
@@ -74,8 +79,7 @@ export default class Server {
   }
 
   renewQueueList(user) {
-    const queueBtn = document.querySelector('.queueBtn');
-    queueBtn.addEventListener('click', e => {
+    this.queueBtn.addEventListener('click', e => {
       e.preventDefault();
       this.addItemsToQueueList(user).then(data => {
         this.db.collection('users').doc(user.uid).set(
