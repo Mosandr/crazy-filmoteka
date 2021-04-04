@@ -9,6 +9,10 @@ import Footer from './footer';
 import MovieGallery from './movie-gallery';
 import initModal from './initModal.js';
 import ModalCreate from './initCardModal';
+import ServiceDB from './serviceDB.js';
+import Auth from './auth.js';
+const serviceDB = new ServiceDB();
+const authorization = new Auth();
 
 // import MovieCardModal from './movieCardModal';
 import Paginator from './paginator';
@@ -86,6 +90,7 @@ export default class UiService {
 
     if (this.isMyLibraryPageOpen()) {
       header.onMyLibraryLinkClick();
+
       // рисуем просмотренные фильмы в галерею
       return;
     }

@@ -18,7 +18,7 @@ firebase.initializeApp({
   messagingSenderId: '827169246677',
   appId: '1:827169246677:web:2524211488e4048eb1c15c',
 });
-export default class Server {
+export default class ServiceDB {
   constructor() {
     this.auth = firebase.auth();
     this.db = firebase.firestore();
@@ -45,11 +45,11 @@ export default class Server {
     const list = await this.db.collection('users').doc(user.uid).get();
     const actualListWatched = list.data().watched;
     console.log(actualListWatched);
-    this.watchBtnHeader.addEventListener(
+    this.libraryBtn.addEventListener(
       'click',
       this.renderGalleryOnBtnClick.bind(this, actualListWatched),
     );
-    this.libraryBtn.addEventListener(
+    this.watchBtnHeader.addEventListener(
       'click',
       this.renderGalleryOnBtnClick.bind(this, actualListWatched),
     );
