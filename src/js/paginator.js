@@ -6,7 +6,7 @@ export default class Paginator {
 
   create(currentPage = 1, totalItems, locationPage) {
     const paginator = pagination.create('search', {
-      prelink: `./${locationPage}`,
+      prelink: `./?${locationPage}`,
       current: currentPage,
       rowsPerPage: 20,
       totalResult: totalItems,
