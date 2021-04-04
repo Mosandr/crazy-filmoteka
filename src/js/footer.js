@@ -1,4 +1,4 @@
-import initTeamModal from "./initTeamModal"
+import initTeamModal from './initTeamModal';
 
 export default class Footer {
   constructor() {
@@ -20,22 +20,22 @@ export default class Footer {
     );
   }
 
-  onTeamLinkClick(event) {
-    //open team modal
-    // console.log('Now team modal must be open');
-    
-    event.preventDefault();
-    initTeamModal();
-    modal.show();
+  //   onTeamLinkClick(event) {
+  //     //open team modal
+  //     // console.log('Now team modal must be open');
 
-    window.addEventListener('keydown', closeModalHandler);
+  //     event.preventDefault();
+  //     initTeamModal();
+  //     modal.show();
 
-    function closeModalHandler(e) {
-      if (e.code === 'Escape') {
-        modal.close();
-        window.removeEventListener('keydown', closeModalHandler);
-      }
-    }
+  //     window.addEventListener('keydown', closeModalHandler);
 
-  }
+  //     function closeModalHandler(e) {
+  //       if (e.code === 'Escape') {
+  //         modal.close();
+  //         window.removeEventListener('keydown', closeModalHandler);
+  //       }
+  //     }
+
+  //   }
 }
