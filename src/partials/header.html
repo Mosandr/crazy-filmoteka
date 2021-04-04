@@ -1,13 +1,13 @@
 <header data-js="page-header" class="page-header">
-  <div class="container">
-
-      <nav class="site-nav">
-      <a class="logo" href="./index.html">
-        <svg class=" logo-svg" width="24px" height="24px" alt="logo">
-          <use href="../images/sprite.svg#logo"></use>
-        </svg>
-        <span class="logo-text">Filmoteka</span>
-      </a>
+  <div class="container ">
+  <nav class="site-nav">
+    <a class="logo" href="./index.html">
+      <svg class=" logo-svg" width="24px" height="24px" alt="logo">
+        <use href="../images/sprite.svg#logo"></use>
+      </svg>
+      <span class="logo-text">Filmoteka</span>
+    </a>
+    <div class="container-nav">
       <ul class="site-nav-link list">
         <li  data-js="home-btn" class="item current">
           <a href="./home"
@@ -18,19 +18,23 @@
             ><span>MY LIBRARY</span>
         </li>
       </ul>
-    </nav>
-    <div id="auth" class="">
-       <p class="logged-out is-hidden">
-         <a href="#" class="" id="logout">
-           <i class="material-icons"> logout </i>
-         </a>
-       </p>
-       <p class="logged-in is-hidden">
-         <a href="#" class="modal-trigger" data-target="modal-login">
-           <i class="material-icons"> perm_identity </i>
-         </a>
-       </p>
-     </div>
+      <div id="auth" class="user-registration">
+        <p class="logged-out is-hidden">
+          <a href="#" class="" id="logout">
+            <i class="material-icons"> logout </i>
+          </a>
+        </p>
+        <p class="logged-in is-hidden">
+          <a href="#" class="modal-trigger" data-target="modal-login">
+            <i class="material-icons"> perm_identity </i>
+          </a>
+        </p>
+      </div>
+    </div>
+   
+  </nav>
+ 
+     
     <form  data-js="search-form" class="search-form" id="search-form">
         <label class="search-form-label">
           <input

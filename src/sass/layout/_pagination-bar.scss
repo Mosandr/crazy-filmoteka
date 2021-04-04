@@ -1,11 +1,35 @@
 #paging {
+  display: flex;
   padding-top: 40px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
 }
 
 .paginator {
+ align-items: center;
   text-align: center;
+  justify-content: center;
 
   &-current {
     color: $accent-color;
   }
 }
+
+@media screen and (min-width:$tablet){
+  #paging {
+    padding-top: 50px;
+  }
+}
+
+@media screen and (min-width:$desktop){
+  #paging {
+    padding-top: 46px;
+  }
+}
+
