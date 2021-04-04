@@ -79,31 +79,36 @@ export default class Server {
     return newList;
   }
   renewWatchedList(user) {
-    this.watchBtn.addEventListener('click', e => {
-      e.preventDefault();
-
-      this.addItemsToWattchedList(user).then(data => {
-        this.db.collection('users').doc(user.uid).set(
-          {
-            watched: data,
-          },
-          { merge: true },
-        );
-      });
+    this.watchBtn.addEventListener(
+      'click',
+      this.handleWatchBtnClick.bind(this, user),
+    );
+  }
+  handleWatchBtnClick(user) {
+    this.addItemsToWattchedList(user).then(data => {
+      this.db.collection('users').doc(user.uid).set(
+        {
+          watched: data,
+        },
+        { merge: true },
+      );
     });
   }
 
   renewQueueList(user) {
-    this.queueBtn.addEventListener('click', e => {
-      e.preventDefault();
-      this.addItemsToQueueList(user).then(data => {
-        this.db.collection('users').doc(user.uid).set(
-          {
-            queue: data,
-          },
-          { merge: true },
-        );
-      });
+    this.queueBtn.addEventListener(
+      'click',
+      this.handleQueueBtnClick.bind(this, user),
+    );
+  }
+  handleQueueBtnClick(user) {
+    this.addItemsToQueueList(user).then(data => {
+      this.db.collection('users').doc(user.uid).set(
+        {
+          queue: data,
+        },
+        { merge: true },
+      );
     });
   }
 }
