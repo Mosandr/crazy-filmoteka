@@ -1,51 +1,20 @@
-// .modal__film__backdrop {
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     background-color: rgba(0, 0, 0, 0.3);
+.modal__film-close-btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
 
-//     padding: 50px 30px;
-//     overflow-y: scroll;
-//   }
+.data__modal__film-close-btn {
+  border: none;
+  background-color: #fff;
+}
 
-// .for__modal.is-open .modal__film__backdrop {
-//   display: block;
-// }
+.modal__btns__down {
+  display: inline-flex;
+  justify-content: space-between;
+}
 
-// .modal__film__backdrop {
-//   display: none;
-// }
-
-// .modal__film__card {
-//   padding: 20px;
-//   max-width: 280px;
-//   max-height: 958px;
-//   width: 100%;
-//   background-color: #fff;
-
-//   @media (min-width: 320px) {
-//     position: absolute;
-//     top: 20%;
-//     left: 50%;
-//     transform: translate(-50%, -10%);
-//   }
-// }
-
-// .data__modal__film-close-btn {
-//   display: inline-flex;
-//   justify-content: flex-end;
-//   border: none;
-//   background-color: #fff;
-// }
-
-// .modal__btns__down {
-//   display: inline-flex;
-//   justify-content: space-between;
-// }
-
-.data__modal__film-add-to-watched {
+.data__modal__film-add-to-watched,
+.data__modal__film-add-to-queue {
   background-color: #ff6b01;
   width: 113px;
   height: 44px;
@@ -56,11 +25,167 @@
   font-size: 12px;
 }
 
-.data__modal__film-add-to-queue {
+.modal__film__card-content {
+  display: block;
+  justify-content: center;
+  padding: 48px, 20px;
+
+  @media screen and (min-width: $tablet) {
+    justify-content: space-around;
+  }
+}
+
+.modal__film__card-information {
+  @media screen and (min-width: $tablet) {
+    display: flex;
+  }
+}
+
+.modal__gallery__img-container {
+  padding-bottom: 30px;
+  @media screen and (min-width: $tablet) {
+    width: 309px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 441px;
+    max-height: 478px;
+  }
+}
+
+.modal__gallery__img {
+  width: 240px;
+  //height: 357px;
+
+  @media screen and (min-width: $tablet) {
+    width: 264px;
+    //  height: 374px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 496px;
+    //background-size: cover;
+    object-fit: cover;
+    overflow: hidden;
+    width: 396px;
+    max-height: 470px;
+  }
+}
+
+.data__modal__film {
+  padding: 20px;
+  max-width: 280px;
+  max-height: 958px;
+  width: 100%;
+  background-color: #fff;
+  overflow: auto;
+
+  @media (min-width: 320px) {
+    position: absolute;
+    transform: translate(-50%, -10%);
+  }
+
+  @media screen and (min-width: $tablet) {
+    max-width: 618px;
+    min-height: 550px;
+    padding-bottom: 20px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    max-width: 882px;
+    min-height: 568px;
+  }
+}
+
+.modal__film__card-text {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+
+  @media screen and (min-width: $tablet) {
+    width: 309px;
+    padding-left: 16px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 441px;
+    padding-left: 30px;
+  }
+}
+
+.modal__gallery__movie-title {
+  font-size: 20px;
+  text-transform: uppercase;
+
+  @media screen and (min-width: $desktop) {
+    font-size: 30px;
+    line-height: 1.172;
+  }
+}
+
+.modal__film__information-categories {
+  font-size: 12px;
+  line-height: 1.33;
+  display: flex;
+}
+
+.modal__film__information-categories-keys {
+  padding-right: 41px;
+  color: #8c8c8c;
+}
+
+.modal__film__information-categories-key,
+.modal__film__inform-ctgr {
+  padding-bottom: 10px;
+}
+
+.modal__film__inform-ctgr-upk {
+  text-transform: uppercase;
+}
+
+.modal__accent-oganre {
+  background: #ff6b01;
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 5px;
+}
+
+.modal__accent-grey {
+  background: #8c8c8c49;
+  padding: 2px 10px;
+  border-radius: 5px;
+}
+
+.modal__gallery__movie-text {
+  font-size: 12px;
+  line-height: 1.67;
+}
+
+.modal__btns__down {
+  @media screen and (min-width: $tablet) {
+    position: absolute;
+    //top: 470px;
+    bottom: 20px;
+    padding-left: 300px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    position: absolute;
+    top: 470px;
+    padding-left: 450px;
+  }
+}
+
+.data__modal__film-add-to-watched:hover,
+.data__modal__film-add-to-watched:focus,
+.data__modal__film-add-to-queue:hover,
+.data__modal__film-add-to-queue:focus {
   background-color: #fff;
   width: 113px;
   height: 44px;
   border-radius: 5px;
+  border: 1px solid black;
   border-color: black;
+  color: black;
   font-size: 12px;
 }

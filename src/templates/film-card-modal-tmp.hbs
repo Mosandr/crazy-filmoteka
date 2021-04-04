@@ -1,12 +1,33 @@
-{{#each this}}<img class="modal__gallery__img" src="https://image.tmdb.org/t/p/w500{{poster_path}}"
-  alt="{{title}} movie poster">
-<h3 class="modal__gallery__movie-title">{{title}}</h3>
-<ul>
-  <li>Vote / Votes_______{{vote_average}}/{{vote_count}} </li>
-  <li>Popularity_________{{popularity}}</li>
-  <li>Original Title______{{original_title}}</li>
-  <li>Genre_____________{{#each genres}}{{name}} {{/each}}</li>
-</ul>
-<h4 class="modal__gallery__movie-about">ABOUT</h4>
-<p>{{overview}}</p>
+{{#each this}}
+<div class="modal__film__card-information">
+
+
+  <div class="modal__gallery__img-container"><img class="modal__gallery__img"
+      src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}} movie poster"></div>
+
+  <div class="modal__film__card-text">
+    <h3 class="modal__gallery__movie-title">{{title}}</h3>
+    <div class="modal__film__information-categories">
+      <ul class="modal__film__information-categories-keys">
+        <li class="modal__film__information-categories-key">Vote / Votes</li>
+        <li class="modal__film__information-categories-key">Popularity</li>
+        <li class="modal__film__information-categories-key">Original Title
+        </li>
+        <li class="modal__film__information-categories-key">Genre</li>
+      </ul>
+      <ul>
+        <li class="modal__film__inform-ctgr"><span class="modal__accent-oganre">{{vote_average}}</span> / <span
+            class="modal__accent-grey">{{vote_count}}</span> </li>
+        <li class="modal__film__inform-ctgr">{{popularity}}</li>
+        <li class="modal__film__inform-ctgr modal__film__inform-ctgr-upk">{{original_title}}</li>
+        <li class="modal__film__inform-ctgr">{{#each genres}}{{name}} {{/each}}</li>
+      </ul>
+    </div>
+
+    <h4 class="modal__gallery__movie-about">ABOUT</h4>
+    <p class="modal__gallery__movie-text">{{overview}}</p>
+  </div>
+
+
+</div>
 {{/each}}
