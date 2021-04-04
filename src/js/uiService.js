@@ -7,7 +7,7 @@
 import Header from './header';
 import Footer from './footer';
 import MovieGallery from './movie-gallery';
-
+import initModal from './initModal.js';
 import ModalCreate from './initCardModal';
 
 // import MovieCardModal from './movieCardModal';
@@ -52,6 +52,7 @@ export default class UiService {
   async init() {
     const header = new Header();
     const footer = new Footer();
+    initModal();
     header.init();
     // footer.init();
 
