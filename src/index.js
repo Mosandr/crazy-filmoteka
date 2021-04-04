@@ -5,7 +5,7 @@ import footer from './partials/footer.html';
 import auth from './partials/authModal.html';
 import Server from './js/serviceDB.js';
 import Auth from './js/auth.js';
-import initModal from './js/initModal.js';
+
 // import Preloader from './js/preloader-backdrop';
 import ModalCreate from './js/initCardModal';
 
@@ -22,8 +22,7 @@ const modalCreate = new ModalCreate();
 
 ui.init();
 
-initModal();
-modalCreate.modalTeamCross();
+// modalCreate.modalTeamCross();
 
 authorization.init();
 
