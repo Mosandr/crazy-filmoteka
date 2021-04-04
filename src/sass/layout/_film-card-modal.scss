@@ -23,6 +23,14 @@
   margin-right: 15px;
   color: #fff;
   font-size: 12px;
+
+  @media screen and (min-width: $tablet) {
+    width: 125px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 136px;
+  }
 }
 
 .modal__film__card-content {
@@ -55,6 +63,7 @@
 
 .modal__gallery__img {
   width: 240px;
+  border-radius: 5px;
   //height: 357px;
 
   @media screen and (min-width: $tablet) {
@@ -100,7 +109,7 @@
 .modal__film__card-text {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: bold;
 
   @media screen and (min-width: $tablet) {
     width: 309px;
