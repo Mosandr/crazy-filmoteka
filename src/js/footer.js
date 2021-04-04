@@ -20,22 +20,21 @@ export default class Footer {
     );
   }
 
-  //   onTeamLinkClick(event) {
-  //     //open team modal
-  //     // console.log('Now team modal must be open');
+  onTeamLinkClick(event) {
+    //open team modal
+    console.log('Now team modal must be open');
 
-  //     event.preventDefault();
-  //     initTeamModal();
-  //     modal.show();
+    //   event.preventDefault();
+    //   initTeamModal();
+    //   modal.show();
 
-  //     window.addEventListener('keydown', closeModalHandler);
+    //   window.addEventListener('keydown', closeModalHandler);
 
-  //     function closeModalHandler(e) {
-  //       if (e.code === 'Escape') {
-  //         modal.close();
-  //         window.removeEventListener('keydown', closeModalHandler);
-  //       }
-  //     }
-
-  //   }
+    //   function closeModalHandler(e) {
+    //     if (e.code === 'Escape') {
+    //       modal.close();
+    //       window.removeEventListener('keydown', closeModalHandler);
+    //     }
+    //   }
+  }
 }
