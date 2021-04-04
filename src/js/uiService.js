@@ -92,9 +92,7 @@ export default class UiService {
 
     if (this.isSearchSubmited()) {
       const query = location.search.slice(7).split('&')[0];
-      console.log('Query: ', query);
       const page = this.getCurrentPage();
-      console.log('Page: ', page);
       this.showSearchFilms(query, page);
       return;
     }
