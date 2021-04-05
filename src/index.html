@@ -24,8 +24,40 @@
             data-js="movie-gallery"
             data-totalItems="0"
           ></ul>
-          <div id="paging"></div>
+          <div id="movie-pagination"></div>
         </div>
+        <script type="text/html" id="pagination-template">
+          <ul class="movie-pagination">
+            <% if ((previous)) {%>
+            <li class="pagination__previous-item">
+              <a href="<%=preparedPreLink + previous %>">&#129120; </a>
+            </li>
+            <% } %> <% if ((first)&&(current > 4)) { %>
+            <li class="pagination__item">
+              <a href="<%=preparedPreLink + first %>"><%=first%></a>
+            </li>
+            <li class="pagination__dots">...</li>
+            <% } %> <% for ( var i = 0; i < range.length; i++ ) { %> <% if
+            (current === range[i]) {%>
+            <li class="movie-pagination__current-page">
+              <a href="<%=preparedPreLink %><%=range[i]%>"><%=current%></a>
+            </li>
+            <% } %> <% if (current !== range[i]){%>
+            <li>
+              <a href="<%=preparedPreLink %><%=range[i]%>"><%=range[i]%></a>
+            </li>
+            <% } %> <% } %> <% if ((last)&&(current < (last - 3)) ){%>
+            <li class="pagination__dots">...</li>
+            <li>
+              <a href="<%=preparedPreLink + last %>"><%=last%></a>
+            </li>
+            <% } %> <% if (next) { %>
+            <li class="pagination__next-item">
+              <a href="<%=preparedPreLink + next %>">&#129122;</a>
+            </li>
+            <% } %>
+          </ul>
+        </script>
       </section>
     </main>
     <!-- <footer></footer> -->

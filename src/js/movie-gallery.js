@@ -6,15 +6,10 @@ export default class MovieGallery {
   }
 
   render(moviesList) {
-    this.clear();
     const markup = moviesList.reduce(
       (acc, item) => acc + movieCardTemplate(item),
       '',
     );
     this.galleryRef.insertAdjacentHTML('afterbegin', markup);
-  }
-
-  clear() {
-    this.galleryRef.innerHTML = '';
   }
 }

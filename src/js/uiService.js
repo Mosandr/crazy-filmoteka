@@ -7,12 +7,15 @@
 import Header from './header';
 import Footer from './footer';
 import MovieGallery from './movie-gallery';
-
+import initModal from './initModal.js';
 import ModalCreate from './initCardModal';
+import ServiceDB from './serviceDB.js';
+import Auth from './auth.js';
+const serviceDB = new ServiceDB();
+const authorization = new Auth();
 
 // import MovieCardModal from './movieCardModal';
 import Paginator from './paginator';
-
 
 import ApiService from './apiService';
 const api = new ApiService();
@@ -29,6 +32,7 @@ export default class UiService {
       pageFooter: document.querySelector('[data-js="page-footer"]'),
       watchBtn: document.querySelector('.data__modal__film-add-to-watched'),
       queueBtn: document.querySelector('.data__modal__film-add-to-queue'),
+      homeBtn: document.querySelector('[data-js="home-btn"]'),
     };
     return refs;
   }
@@ -43,17 +47,36 @@ export default class UiService {
     return url.slice(index);
   }
 
+  isMyLibraryPageOpen() {
+    const url = location.href;
+    if (url.includes('my-library')) return true;
+    return false;
+  }
+
+  isSearchSubmited() {
+    const url = location.href;
+    if (url.includes('query')) return true;
+    return false;
+  }
+
+  onSearchSubmit(event) {
+    if (event.currentTarget.query.value.trim() === '') {
+      event.preventDefault();
+      event.currentTarget.querySelector('.search-form__error').textContent =
+        'Search query was empty. Enter the movie name and try again';
+    }
+  }
+
   async init() {
     const header = new Header();
     const footer = new Footer();
-
+    initModal();
     header.init();
     footer.init();
 
-    this.showPopularFilms(this.getCurrentPage());
-    header.refs.searcForm.addEventListener(
+    this.refs.homeBtn.addEventListener(
       'click',
-      this.onSearchBtnClick.bind(this),
+      this.showPopularFilms.bind(this, 1),
     );
 
     this.refs.movieGallery.addEventListener(
@@ -61,38 +84,29 @@ export default class UiService {
       this.onMovieItemClick.bind(this),
     );
 
+    this.refs.pageHeader
+      .querySelector('.search-form')
+      .addEventListener('submit', this.onSearchSubmit);
+
+    if (this.isMyLibraryPageOpen()) {
+      header.onMyLibraryLinkClick();
+
+      // рисуем просмотренные фильмы в галерею
+      return;
+    }
+
+    if (this.isSearchSubmited()) {
+      const query = location.search.slice(7).split('&')[0];
+      const page = this.getCurrentPage();
+      this.showSearchFilms(query, page);
+      return;
+    }
+
+    this.showPopularFilms(this.getCurrentPage());
+
     // вешаем слушатели на кнопки навигации
     // при нажатии на кнопку MyLibrary - вешаем слушатели на кнопки Watch и Queue
     // при нажатии на кнопку Home снимаем слушатели с кнопки Watch и Queue
-  }
-
-  async onSearchBtnClick(event) {
-    if (event.target.nodeName !== 'BUTTON' && event.target.nodeName !== 'svg')
-      return;
-    const query = event.currentTarget.elements.query.value;
-    const errorRef = event.currentTarget.querySelector('.search-form__error');
-    errorRef.textContent = '';
-    try {
-      const data = await api.fetchFilmsOnSearch(query);
-      const genresData = await api.fetchGenresList();
-      const movieList = this.prepareDataForMarkup(
-        data.results,
-        genresData.genres,
-      );
-      if (data.results.length === 0) {
-        throw error;
-      }
-      const movieGallery = new MovieGallery();
-      movieGallery.render(movieList);
-    } catch (e) {
-      errorRef.textContent =
-        'Search result not successful. Enter the correct movie name and try again';
-    }
-
-    // запрашиваем фильмы с сревера по запросу
-    //api.fetchFilmsOnSearch(query)
-    //обрабатываем данные и собираем их в масив объектов - movieList
-    //рисуем галерею фильмов метод класса MovieGallery.render(movieList)
   }
 
   async onMovieItemClick(event) {
@@ -100,37 +114,30 @@ export default class UiService {
     const movieId = event.target.parentNode.dataset.id;
     this.refs.watchBtn.dataset.id = movieId;
     this.refs.queueBtn.dataset.id = movieId;
-    console.log(this.refs.watchBtn);
 
     console.log(movieId);
     try {
       const data = await api.fetchFilmById(movieId);
       this.refs.watchBtn.dataset.ob = JSON.stringify(data);
       this.refs.queueBtn.dataset.ob = JSON.stringify(data);
-      console.log(this.refs.watchBtn);
 
       // тут ренедрим модалку фильма по данным data
-
       const modalCreate = new ModalCreate();
       modalCreate.render(data);
+      const genresModal = document.querySelector('.genres-modal');
+      genresModal.textContent = genresModal.textContent
+        .trim()
+        .split(' ')
+        .join(', ');
       modalCreate.init();
       console.log(data);
 
-//       const movieModal = new MovieCardModal();
-//       movieModal.renderMovieModal(data);
-
+      //       const movieModal = new MovieCardModal();
+      //       movieModal.renderMovieModal(data);
     } catch (e) {
       console.log(e);
     }
   }
-
-  onHomeBtnClick(event) {}
-
-  onMyLibraryBtnClick(event) {}
-
-  onWatchedBtnClick(event) {}
-
-  onQueueBtnClick(event) {}
 
   async showPopularFilms(page = 1) {
     try {
@@ -140,13 +147,43 @@ export default class UiService {
         data.results,
         genresData.genres,
       );
+
       const movieGallery = new MovieGallery();
       movieGallery.render(movieList);
 
       const paginator = new Paginator();
-      paginator.create(this.getCurrentPage(), data.total_results);
+      paginator.create(this.getCurrentPage(), data.total_results, 'home');
     } catch (e) {
       console.log('error');
+    }
+  }
+
+  async showSearchFilms(query, page = 1) {
+    try {
+      const data = await api.fetchFilmsOnSearch(query, page);
+      const genresData = await api.fetchGenresList();
+      if (!data.total_results > 0) throw error;
+
+      const movieList = this.prepareDataForMarkup(
+        data.results,
+        genresData.genres,
+      );
+
+      const movieGallery = new MovieGallery();
+      movieGallery.render(movieList);
+
+      if (data.total_results / 20 > 1) {
+        const paginator = new Paginator();
+        paginator.create(
+          this.getCurrentPage(),
+          data.total_results,
+          `query=${query}`,
+        );
+      }
+      this.refs.pageHeader.querySelector('.search-form-input').value = query;
+    } catch (e) {
+      this.refs.pageHeader.querySelector('.search-form__error').textContent =
+        'Search result not successful. Enter the correct movie name and try again';
     }
   }
 
@@ -160,7 +197,7 @@ export default class UiService {
       }, []);
 
       movie.genres = genresNames.join(', ');
-      movie.year = movie.release_date.slice(0, 4);
+      movie.year = movie.release_date ? movie.release_date.slice(0, 4) : '';
 
       return movie;
     });

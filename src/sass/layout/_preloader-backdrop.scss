@@ -1,5 +1,8 @@
 .backdrop-container {
   position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 0;
   left: 0;
   width: 100%;
@@ -9,7 +12,7 @@
   transition: all 500ms linear;
 }
 
-.backdrop-container .is-hidden {
+.backdrop-container.is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
