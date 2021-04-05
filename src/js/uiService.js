@@ -124,6 +124,11 @@ export default class UiService {
       // тут ренедрим модалку фильма по данным data
       const modalCreate = new ModalCreate();
       modalCreate.render(data);
+      const genresModal = document.querySelector('.genres-modal');
+      genresModal.textContent = genresModal.textContent
+        .trim()
+        .split(' ')
+        .join(', ');
       modalCreate.init();
       console.log(data);
 
