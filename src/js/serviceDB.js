@@ -49,6 +49,14 @@ export default class ServiceDB {
       'afterbegin',
       libraryGalleryCardTmp(actualListWatched),
     );
+    const genres = document.querySelectorAll('.card-genres');
+    genres.forEach(el => {
+      el.textContent = el.textContent.trim().split(' ').join(', ');
+    });
+    const years = document.querySelectorAll('.year-of-release');
+    years.forEach(el => {
+      el.textContent = el.textContent.trim().split('').splice(0, 4).join('');
+    });
     console.log(actualListWatched);
     this.libraryBtn.addEventListener(
       'click',
@@ -66,22 +74,42 @@ export default class ServiceDB {
       'afterbegin',
       libraryGalleryCardTmp(actualItemsList),
     );
+    const genres = document.querySelectorAll('.card-genres');
+    genres.forEach(el => {
+      el.textContent = el.textContent.trim().split(' ').join(', ');
+    });
+    const years = document.querySelectorAll('.year-of-release');
+    years.forEach(el => {
+      el.textContent = el.textContent.trim().split('').splice(0, 4).join('');
+    });
   }
   async addItemsToWattchedList(user) {
-    const watchedList = await this.db.collection('users').doc(user.uid).get();
-    const newList = watchedList.data().watched;
-    const newFilm = JSON.parse(this.watchBtn.dataset.ob);
-
-    newList.push(newFilm);
-    return newList;
+    try {
+      const watchedList = await this.db.collection('users').doc(user.uid).get();
+      const newList = watchedList.data().watched;
+      const newFilm = JSON.parse(this.watchBtn.dataset.ob);
+      if (newList.some(e => e.id === newFilm.id)) {
+        alert('Already add');
+        return newList;
+      } else {
+        newList.push(newFilm);
+        return newList;
+      }
+    } catch (e) {
+      console.log(e);
+    }
   }
   async addItemsToQueueList(user) {
     const queueList = await this.db.collection('users').doc(user.uid).get();
     const newList = queueList.data().queue;
     const newFilm = JSON.parse(this.queueBtn.dataset.ob);
-
-    newList.push(newFilm);
-    return newList;
+    if (newList.some(e => e.id === newFilm.id)) {
+      alert('Already add');
+      return newList;
+    } else {
+      newList.push(newFilm);
+      return newList;
+    }
   }
   renewWatchedList(user) {
     this.watchBtn.addEventListener(

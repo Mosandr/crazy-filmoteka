@@ -13,6 +13,9 @@ import ServiceDB from './serviceDB.js';
 import Auth from './auth.js';
 const serviceDB = new ServiceDB();
 const authorization = new Auth();
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
 
 // import MovieCardModal from './movieCardModal';
 import Paginator from './paginator';
@@ -23,6 +26,7 @@ const api = new ApiService();
 export default class UiService {
   constructor() {
     this.refs = this.getGefs();
+    this.db = firebase.firestore();
   }
 
   getGefs() {
@@ -204,5 +208,42 @@ export default class UiService {
     });
 
     return preparedMovieList;
+  }
+  btnDisabledChange() {
+    serviceDB.auth.onAuthStateChanged(user => {
+      if (user) {
+        this.refs.movieGallery.addEventListener('click', async event => {
+          if (event.target.nodeName === 'UL') return;
+          const movieId = event.target.parentNode.dataset.id;
+          const list = await this.db.collection('users').doc(user.uid).get();
+          let newList = list.data().watched;
+          newList = newList.map(el => el.id);
+
+          if (newList.some(el => el === +movieId)) {
+            this.refs.watchBtn.disabled = true;
+            this.refs.watchBtn.classList.add('disabled');
+            this.refs.watchBtn.textContent = 'ADDED TO WATCHED';
+          } else {
+            this.refs.watchBtn.disabled = false;
+            this.refs.watchBtn.classList.remove('disabled');
+            this.refs.watchBtn.textContent = 'ADD TO WATCHED';
+          }
+          let newListQue = list.data().queue;
+          newListQue = newListQue.map(el => el.id);
+
+          if (newListQue.some(el => el === +movieId)) {
+            this.refs.queueBtn.disabled = true;
+            this.refs.queueBtn.classList.add('disabled');
+            this.refs.queueBtn.textContent = 'ADDED TO QUEUE';
+          } else {
+            this.refs.queueBtn.disabled = false;
+            this.refs.queueBtn.classList.remove('disabled');
+            this.refs.queueBtn.textContent = 'ADD TO QUEUE';
+          }
+        });
+      } else {
+        alert('Login to see list');
+      }
+    });
   }
 }
