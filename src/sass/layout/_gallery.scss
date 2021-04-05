@@ -12,15 +12,15 @@
     flex-direction: row;
     flex-wrap: wrap;
     margin: -15px;
-    
+    padding-bottom: 55px;
   }
 }
 
 .gallery__item {
-    cursor: pointer;
-  
-    padding-bottom: 7px;
-    object-fit: contain;
+  cursor: pointer;
+
+  padding-bottom: 7px;
+  object-fit: contain;
 
   @media (min-width: $tablet) {
     margin: 15px;
@@ -30,7 +30,7 @@
   @media (min-width: $desktop) {
     margin: 15px;
     flex-basis: calc((100% - 90px) / 3);
-     width: 274px;
+    width: 274px;
   }
 }
 
@@ -41,8 +41,9 @@
 .gallery__movie-title {
   padding-top: 10px;
 }
-  
-.gallery__movie-title, .gallery__movie-genre {
+
+.gallery__movie-title,
+.gallery__movie-genre {
   margin: 0;
   font-weight: 500;
   font-size: 12px;
