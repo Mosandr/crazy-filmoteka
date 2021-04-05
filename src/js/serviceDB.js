@@ -93,6 +93,9 @@ export default class ServiceDB {
         return newList;
       } else {
         newList.push(newFilm);
+        this.watchBtn.disabled = true;
+        this.watchBtn.classList.add('disabled');
+        this.watchBtn.textContent = 'ADDED TO WATCHED';
         return newList;
       }
     } catch (e) {
@@ -108,6 +111,9 @@ export default class ServiceDB {
       return newList;
     } else {
       newList.push(newFilm);
+      this.queueBtn.disabled = true;
+      this.queueBtn.classList.add('disabled');
+      this.queueBtn.textContent = 'ADDED TO QUEUE';
       return newList;
     }
   }
