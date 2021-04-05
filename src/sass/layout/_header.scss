@@ -14,7 +14,7 @@
 }
 
 .logo-text {
-  display: none;
+  // display: none;
   opacity: 0;
   width: 0;
   height: 0;
@@ -25,6 +25,12 @@
   justify-content: space-between;
   align-items: baseline;
   color: #ffffff;
+}
+
+.container-nav {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
 }
 
 .site-nav-link {
@@ -47,10 +53,12 @@
 .site-nav-link li {
   cursor: pointer;
 
-  &:not(:last-child) {
+  &:first-child {
     margin-right: 39px;
   }
 }
+
+
 
 .current {
   position: relative;
@@ -70,6 +78,7 @@
 
 .search-form {
   position: relative;
+  display: block;
   text-align: center;
   font-size: 14px;
   line-height: 16px;
@@ -128,8 +137,8 @@
   stroke: #ffffff;
 }
 
-.search-form-input:focus ~ .input-search-svg,
-.search-form-input:hover .input-search-svg {
+.search-form-input:focus.input-search-svg,
+.search-form-input:hover.input-search-svg {
   stroke: $accent-color;
 }
 
@@ -157,7 +166,7 @@
 
 @media (min-width: 768px) {
   .logo-text {
-    display: inline-block;
+    // display: inline-block;
     opacity: 1;
     margin-left: 12px;
     font-weight: 500;
@@ -187,6 +196,23 @@
   }
 }
 
+
+.user-registration {
+  margin-left: 59px;
+}
+
+.logged-in {
+ position: relative;
+}
 .material-icons {
   color: $title-dark-theme-color;
+  position: absolute;
+  content: '';
+  bottom: -4px;
+  right: 0;
+
+  &:focus,
+  &:hover {
+    color: $accent-color;
+  }
 }

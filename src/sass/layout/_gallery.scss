@@ -1,4 +1,5 @@
 .gallery {
+  display: block;
   padding-top: 20px;
   padding-bottom: 40px;
 }
@@ -6,13 +7,21 @@
 .gallery__list {
   @media (min-width: $tablet) {
     display: flex;
+    justify-content: space-between;
+    list-style: none;
     flex-direction: row;
     flex-wrap: wrap;
     margin: -15px;
+    
   }
 }
 
 .gallery__item {
+    cursor: pointer;
+  
+    padding-bottom: 7px;
+    object-fit: contain;
+
   @media (min-width: $tablet) {
     margin: 15px;
     flex-basis: calc((100% - 60px) / 2);
@@ -21,24 +30,30 @@
   @media (min-width: $desktop) {
     margin: 15px;
     flex-basis: calc((100% - 90px) / 3);
+     width: 274px;
   }
 }
 
 .gallery__img {
   border-radius: 5px;
 }
+
 .gallery__movie-title {
-  margin: 0;
   padding-top: 10px;
+}
+  
+.gallery__movie-title, .gallery__movie-genre {
+  margin: 0;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.167;
 }
 
 .gallery__movie-genre {
-  margin: 0;
-  padding-top: 10px;
+  color: $accent-color;
 }
 
 .gallery__movie-rating {
-  margin-left: 10px;
   color: $title-dark-theme-color;
   padding: 1px 10px;
   background: $accent-color;

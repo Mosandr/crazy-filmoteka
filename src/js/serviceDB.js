@@ -112,3 +112,66 @@ export default class ServiceDB {
     });
   }
 }
+
+
+// =====
+
+// export default class ServerActive {
+//   constructor() {
+//     this.auth = firebase.auth();
+//     this.db = firebase.firestore();
+//     this.watchBtn = document.querySelector('.data__modal__film-add-to-watched');
+//     this.queueBtn = document.querySelector('.data__modal__film-add-to-queue');
+//   }
+
+
+//   async getActualQueueLists(user) {
+//     //get info from user's collection
+//     const list = await this.db.collection('users').doc(user.uid).get();
+//     const actualListQueue = list.data().queue;
+//     console.log(actualListQueue);
+//     this.queueBtnHeader.addEventListener(
+//       'click',  e => {
+//         e.preventDefault();
+
+
+//       this.matchMovieQueue.bind(this),
+//     );
+//   }
+// }
+
+//   async getActualWatchedLists(user) {
+//     //get info from user's collection
+//     const list = await this.db.collection('users').doc(user.uid).get();
+//     const actualListWatched = list.data().watched;
+//     console.log(actualListWatched);
+//     this.watchBtnHeader.addEventListener(
+//       'click',  e => {
+//         e.preventDefault();
+
+
+//       this.matchMovieWatched.bind(this),
+//     );
+//   }
+// }
+
+//   matchMovieWatched () {
+//       const movieWatched = getActualWatchedLists();
+//       const findWatchedById = movieWatched.id.find(item => intem === id);
+    
+//       if (findWatchedById) {
+//         watchBtn.classList.add('is-clicked');
+//       }
+//     }
+
+    
+//   matchMovieQueue () {
+//      const movieQueue = getActualQueueLists();
+//      const findQueueById = movieQueue.id.find(item => intem === id)
+
+//      if (findQueuedById) {
+//      queueBtn.classList.add('is-clicked');
+//      }
+//    }
+
+// }
