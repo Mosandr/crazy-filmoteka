@@ -2,8 +2,8 @@ import './sass/styles.scss';
 import UiService from './js/uiService';
 import header from './partials/header.html';
 import footer from './partials/footer.html';
-import auth from './partials/authModal.html';
-import Server from './js/serviceDB.js';
+import auth from './partials/modals.html';
+import ServiceDB from './js/serviceDB.js';
 import Auth from './js/auth.js';
 
 // import Preloader from './js/preloader-backdrop';
@@ -16,7 +16,7 @@ bodyRef.insertAdjacentHTML('beforeend', footer);
 bodyRef.insertAdjacentHTML('afterbegin', auth);
 
 const ui = new UiService();
-const server = new Server();
+const serviceDB = new ServiceDB();
 const authorization = new Auth();
 const modalCreate = new ModalCreate();
 
@@ -26,13 +26,15 @@ ui.init();
 
 authorization.init();
 
-server.auth.onAuthStateChanged(user => {
+serviceDB.auth.onAuthStateChanged(user => {
   if (user) {
     authorization.setupUI(user);
-    server.renewQueueList(user);
-    server.renewWatchedList(user);
-    server.getActualQueueLists(user);
-    server.getActualWatchedLists(user);
+    serviceDB.renewQueueList(user);
+    serviceDB.renewWatchedList(user);
+    serviceDB.getActualQueueLists(user);
+    if (ui.isMyLibraryPageOpen()) {
+      serviceDB.getActualWatchedLists(user);
+    }
   } else {
     authorization.setupUI();
   }
