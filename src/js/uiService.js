@@ -123,6 +123,7 @@ export default class UiService {
 
       // тут ренедрим модалку фильма по данным data
       const modalCreate = new ModalCreate();
+      modalCreate.renderPhoto(data);
       modalCreate.render(data);
       const genresModal = document.querySelector('.genres-modal');
       genresModal.textContent = genresModal.textContent
