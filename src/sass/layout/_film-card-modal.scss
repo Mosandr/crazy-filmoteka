@@ -64,16 +64,13 @@
 .modal__gallery__img {
   width: 240px;
   border-radius: 5px;
-  //height: 357px;
 
   @media screen and (min-width: $tablet) {
     width: 264px;
-    //  height: 374px;
   }
 
   @media screen and (min-width: $desktop) {
     width: 496px;
-    //background-size: cover;
     object-fit: cover;
     overflow: hidden;
     width: 396px;
@@ -84,7 +81,7 @@
 .data__modal__film {
   padding: 20px;
   max-width: 280px;
-  max-height: 958px;
+  min-height: 958px;
   width: 100%;
   background-color: #fff;
   overflow: auto;
@@ -96,7 +93,7 @@
 
   @media screen and (min-width: $tablet) {
     max-width: 618px;
-    min-height: 550px;
+    min-height: auto;
     padding-bottom: 20px;
   }
 
@@ -172,16 +169,17 @@
 
 .modal__btns__down {
   @media screen and (min-width: $tablet) {
-    position: absolute;
-    //top: 470px;
-    bottom: 20px;
+    //position: absolute;
+    top: 390px;
     padding-left: 300px;
+    //  padding-top: 20px;
   }
 
   @media screen and (min-width: $desktop) {
-    position: absolute;
+    //position: absolute;
     top: 470px;
     padding-left: 450px;
+    //  padding-top: 20px;
   }
 }
 
@@ -197,4 +195,12 @@
   border-color: black;
   color: black;
   font-size: 12px;
+
+  @media screen and (min-width: $tablet) {
+    width: 125px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 136px;
+  }
 }
