@@ -20,7 +20,7 @@ export default class ModalCreate {
     this.modalInsert.insertAdjacentHTML('afterbegin', markup);
   }
   renderPhoto(modalInsertObj) {
-    this.clear();
+    this.modalInsertImg.innerHTML = '';
     const arr = [];
     arr.push(modalInsertObj);
     const markup = filmCardModalTmp(arr);
