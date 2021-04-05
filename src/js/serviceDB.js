@@ -44,6 +44,11 @@ export default class ServiceDB {
     //get info from user's collection
     const list = await this.db.collection('users').doc(user.uid).get();
     const actualListWatched = list.data().watched;
+    this.galleryListRef.innerHTML = '';
+    this.galleryListRef.insertAdjacentHTML(
+      'afterbegin',
+      libraryGalleryCardTmp(actualListWatched),
+    );
     console.log(actualListWatched);
     this.libraryBtn.addEventListener(
       'click',
@@ -113,7 +118,6 @@ export default class ServiceDB {
   }
 }
 
-
 // =====
 
 // export default class ServerActive {
@@ -124,7 +128,6 @@ export default class ServiceDB {
 //     this.queueBtn = document.querySelector('.data__modal__film-add-to-queue');
 //   }
 
-
 //   async getActualQueueLists(user) {
 //     //get info from user's collection
 //     const list = await this.db.collection('users').doc(user.uid).get();
@@ -133,7 +136,6 @@ export default class ServiceDB {
 //     this.queueBtnHeader.addEventListener(
 //       'click',  e => {
 //         e.preventDefault();
-
 
 //       this.matchMovieQueue.bind(this),
 //     );
@@ -149,7 +151,6 @@ export default class ServiceDB {
 //       'click',  e => {
 //         e.preventDefault();
 
-
 //       this.matchMovieWatched.bind(this),
 //     );
 //   }
@@ -158,13 +159,12 @@ export default class ServiceDB {
 //   matchMovieWatched () {
 //       const movieWatched = getActualWatchedLists();
 //       const findWatchedById = movieWatched.id.find(item => intem === id);
-    
+
 //       if (findWatchedById) {
 //         watchBtn.classList.add('is-clicked');
 //       }
 //     }
 
-    
 //   matchMovieQueue () {
 //      const movieQueue = getActualQueueLists();
 //      const findQueueById = movieQueue.id.find(item => intem === id)
