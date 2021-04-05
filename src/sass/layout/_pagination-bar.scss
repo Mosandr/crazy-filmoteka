@@ -15,8 +15,8 @@
   &__item {
     display: block;
 
-    &--next,
-    &--prev {
+    &--next > a,
+    &--prev > a {
       min-width: 40px;
       height: 40px;
       background-color: #f7f7f7;
