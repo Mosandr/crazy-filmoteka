@@ -1,32 +1,71 @@
 .movie-pagination {
-  display: flex;
-  padding-top: 40px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 20px;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-}
-
-.movie-pagination > li {
-  min-width: 40px;
-  height: 40px;
-}
-.movie-pagination__current-page > a {
-  color: $accent-color;
-}
-
-@media screen and (min-width: $tablet) {
-  #paging {
-    padding-top: 50px;
+  &__list {
+    display: flex;
+    margin: 0;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.333;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
   }
-}
 
-@media screen and (min-width: $desktop) {
-  #paging {
-    padding-top: 46px;
+  &__item {
+    display: block;
+
+    &--next > a,
+    &--prev > a {
+      min-width: 40px;
+      height: 40px;
+      background-color: #f7f7f7;
+      border-radius: 5px;
+    }
+
+    &.pagination__dots {
+      display: none;
+
+      @media (min-width: $tablet) {
+        display: block;
+        padding-top: 5px;
+        padding-bottom: 10px;
+      }
+    }
+
+    &.pagination__first-last {
+      display: none;
+
+      @media (min-width: $tablet) {
+        display: block;
+      }
+    }
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &__link {
+    display: inline-block;
+    padding: 13px 3px;
+    border-radius: 5px;
+    color: $title-color;
+    &:hover,
+    :focus {
+      color: $accent-color;
+    }
+
+    &--current-page {
+      min-width: 40px;
+      height: 40px;
+      color: $title-dark-theme-color;
+      background-color: $accent-color;
+
+      &:hover,
+      :focus {
+        color: $title-dark-theme-color;
+      }
+    }
   }
 }
