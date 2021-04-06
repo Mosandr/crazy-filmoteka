@@ -136,7 +136,7 @@ export default class ServiceDB {
     if (user) {
       loginMessage.textContent = '';
     } else {
-      loginMessage.textContent = 'Login to see library';
+      loginMessage.textContent = 'Please Login to see your library';
     }
   }
   async dataForQueuePagination(user, page) {
