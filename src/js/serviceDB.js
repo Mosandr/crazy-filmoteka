@@ -6,10 +6,12 @@
 //  - удалить из списка очереди фильмов
 //  - получить список просмотреных фильмов
 //  - получить список очереди фильмов
+
 import libraryGalleryCardTmp from '../templates/library-gallery-card-tmp.hbs';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+
 firebase.initializeApp({
   apiKey: 'AIzaSyDckuyQARNfaPXRs7Jiz4Xgr28aczvsv5w',
   authDomain: 'crazy-filmoteka.firebaseapp.com',
@@ -18,6 +20,7 @@ firebase.initializeApp({
   messagingSenderId: '827169246677',
   appId: '1:827169246677:web:2524211488e4048eb1c15c',
 });
+
 export default class ServiceDB {
   constructor() {
     this.auth = firebase.auth();
@@ -43,6 +46,7 @@ export default class ServiceDB {
     //get info from user's collection
     const list = await this.db.collection('users').doc(user.uid).get();
     const actualListWatched = list.data().watched;
+    console.dir(actualListWatched);
     this.renderGalleryOnBtnClick(actualListWatched);
 
     this.watchBtnHeader.addEventListener(
