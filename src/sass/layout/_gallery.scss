@@ -7,7 +7,6 @@
 .gallery__list {
   @media (min-width: $tablet) {
     display: flex;
-    justify-content: space-between;
     list-style: none;
     flex-direction: row;
     flex-wrap: wrap;
