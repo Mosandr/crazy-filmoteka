@@ -1,19 +1,11 @@
-//Класс с полями-свойствами
-// refs - объект в оплях которого ссылки на все основные елементы страницы:
-// хедер, лого, строка поиска, кнопки хоум и библиотека, все кнопки хедера, галерея, футер
-// Методы:
-//
-
 import Header from './header';
-import Footer from './footer';
 import MovieGallery from './movie-gallery';
 import initModal from './initModal.js';
 import ModalCreate from './initCardModal';
 import ServiceDB from './serviceDB.js';
-import Auth from './auth.js';
+
 const serviceDB = new ServiceDB();
 
-// import MovieCardModal from './movieCardModal';
 import Paginator from './paginator';
 
 import ApiService from './apiService';
@@ -67,11 +59,10 @@ export default class UiService {
   }
 
   async init() {
+    this.btnDisabledChange();
     const header = new Header();
-    const footer = new Footer();
     initModal();
     header.init();
-    footer.init();
 
     this.refs.homeBtn.addEventListener(
       'click',
@@ -102,10 +93,6 @@ export default class UiService {
     }
 
     this.showPopularFilms(this.getCurrentPage());
-
-    // вешаем слушатели на кнопки навигации
-    // при нажатии на кнопку MyLibrary - вешаем слушатели на кнопки Watch и Queue
-    // при нажатии на кнопку Home снимаем слушатели с кнопки Watch и Queue
   }
 
   async onMovieItemClick(event) {
@@ -129,9 +116,6 @@ export default class UiService {
         .split(' ')
         .join(', ');
       modalCreate.init();
-
-      //       const movieModal = new MovieCardModal();
-      //       movieModal.renderMovieModal(data);
     } catch (e) {
       console.log(e);
     }
@@ -202,6 +186,7 @@ export default class UiService {
 
     return preparedMovieList;
   }
+
   btnDisabledChange() {
     serviceDB.auth.onAuthStateChanged(user => {
       if (user) {

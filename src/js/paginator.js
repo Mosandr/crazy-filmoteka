@@ -1,4 +1,5 @@
 // класс который описывает функионал фзаимодействия с пащинацией
+
 const pagination = require('pagination');
 
 export default class Paginator {

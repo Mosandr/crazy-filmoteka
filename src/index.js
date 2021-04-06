@@ -8,8 +8,6 @@ import UiService from './js/uiService';
 import ServiceDB from './js/serviceDB.js';
 import Auth from './js/auth.js';
 
-import ModalCreate from './js/initCardModal';
-
 const bodyRef = document.querySelector('BODY');
 const mainRef = document.querySelector('MAIN');
 
@@ -22,7 +20,6 @@ const serviceDB = new ServiceDB();
 const authorization = new Auth();
 
 ui.init();
-ui.btnDisabledChange();
 
 authorization.init();
 
