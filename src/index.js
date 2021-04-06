@@ -1,7 +1,9 @@
 import './sass/styles.scss';
-import UiService from './js/uiService';
+
 import header from './partials/header.html';
 import footer from './partials/footer.html';
+
+import UiService from './js/uiService';
 import auth from './partials/modals.html';
 import ServiceDB from './js/serviceDB.js';
 import Auth from './js/auth.js';
@@ -10,10 +12,11 @@ import Auth from './js/auth.js';
 import ModalCreate from './js/initCardModal';
 
 const bodyRef = document.querySelector('BODY');
+const mainRef = document.querySelector('MAIN');
 
-bodyRef.insertAdjacentHTML('afterbegin', header);
-bodyRef.insertAdjacentHTML('beforeend', footer);
 bodyRef.insertAdjacentHTML('afterbegin', auth);
+bodyRef.insertAdjacentHTML('afterbegin', header);
+mainRef.insertAdjacentHTML('afterend', footer);
 
 const ui = new UiService();
 const serviceDB = new ServiceDB();

@@ -8,29 +8,31 @@
   background-position: center;
 
   @media screen and (min-device-pixel-ratio: 2),
-  screen and (min-resolution: 192dpi),
-  screen and (min-resolution: 2dppx) {
-  background-image: linear-gradient(
-      to right,
-      rgba(00, 00, 00, 0.56),
-      rgba(00, 00, 00, 0.56)
-    ),
-    url(../../images/head-mobile@2x.jpg);}
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        to right,
+        rgba(00, 00, 00, 0.56),
+        rgba(00, 00, 00, 0.56)
+      ),
+      url(../../src/images/head-mobile@2x.jpg);
+  }
 }
 
 .page-header.lib {
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url('../../src/images/lib-mobile.jpg');
 
-    @media screen and (min-device-pixel-ratio: 2),
-  screen and (min-resolution: 192dpi),
-  screen and (min-resolution: 2dppx) {
-  background-image: linear-gradient(
-      to right,
-      rgba(00, 00, 00, 0.56),
-      rgba(00, 00, 00, 0.56)
-    ),
-    url(../../images/lib-mobile@2x.jpg);}
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        to right,
+        rgba(00, 00, 00, 0.56),
+        rgba(00, 00, 00, 0.56)
+      ),
+      url(../../src/images/lib-mobile@2x.jpg);
+  }
 }
 
 .logo-text {
@@ -197,31 +199,32 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../../src/images/head-tablet.jpg');
 
-      
-      @media screen and (min-device-pixel-ratio: 2),
+    @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),
       screen and (min-resolution: 2dppx) {
       background-image: linear-gradient(
           to right,
           rgba(00, 00, 00, 0.56),
           rgba(00, 00, 00, 0.56)
-        ),url(../../images/head-tablet@2x.jpg);
-  }
+        ),
+        url(../../src/images/head-tablet@2x.jpg);
+    }
   }
   .page-header.lib {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../images/lib-tablet.jpg');
 
-      @media screen and (min-device-pixel-ratio: 2),
+    @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),
       screen and (min-resolution: 2dppx) {
       background-image: linear-gradient(
           to right,
           rgba(00, 00, 00, 0.56),
           rgba(00, 00, 00, 0.56)
-        ),url(../../images/lib-tablet@2x.jpg);  
+        ),
+        url(../../src/images/lib-tablet@2x.jpg);
+    }
   }
-}
 }
 
 @media (min-width: $desktop) {
@@ -229,33 +232,35 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../../src/images/head-pc.jpg');
 
-      @media screen and (min-device-pixel-ratio: 2),
+    @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),
       screen and (min-resolution: 2dppx) {
       background-image: linear-gradient(
           to right,
           rgba(00, 00, 00, 0.56),
           rgba(00, 00, 00, 0.56)
-        ),url(../../images/head-pc@2x.jpg);
+        ),
+        url(../../src/images/head-pc@2x.jpg);
+    }
   }
-}
   .page-header.lib {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../../src/images/lib-pc.jpg');
 
-      @media screen and (min-device-pixel-ratio: 2),
+    @media screen and (min-device-pixel-ratio: 2),
       screen and (min-resolution: 192dpi),
       screen and (min-resolution: 2dppx) {
       background-image: linear-gradient(
           to right,
           rgba(00, 00, 00, 0.56),
           rgba(00, 00, 00, 0.56)
-        ),url(../../images/lib-pc@2x.jpg);
+        ),
+        url(../../src/images/lib-pc@2x.jpg);
+    }
   }
 }
-}
 
-// registration 
+// registration
 
 .user-registration {
   margin-left: 39px;
@@ -280,47 +285,42 @@
 }
 
 @media (max-width: 342px) {
+  .site-nav-link li {
+    cursor: pointer;
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
 
-.site-nav-link li {
-  cursor: pointer;
-  &:first-child {
-    margin-right: 10px;
+  .user-registration {
+    margin-left: 10px;
   }
 }
 
-.user-registration {
-  margin-left: 10px;
-}
-}
-
-
 .modal {
-  background-color:rgba(48, 48, 48, 0.9);
+  background-color: rgba(48, 48, 48, 0.9);
 }
-
 
 .modal-content-title {
-  color:#ffffff;
+  color: #ffffff;
   font-family: Roboto;
   font-weight: normal;
   font-size: 18px;
   line-height: 20px;
-
 }
 
 .input-field {
-  color:$accent-color;
+  color: $accent-color;
   font-family: Roboto;
   font-weight: normal;
   font-style: italic;
   font-size: 16px;
   line-height: 18px;
- 
+
   &:first-child {
     margin-bottom: 4px;
   }
-  }
-
+}
 
 .input-field-data {
   font-family: Roboto;
@@ -331,21 +331,21 @@
   max-width: 200px;
   background-color: honeydew;
   border: none;
-  outline:none;
+  outline: none;
   border-radius: 4px;
 }
 
 .registration-btn {
   margin-top: 15px;
   margin-bottom: 10px;
-  padding:8px 0 8px 0;
-  background-color:$accent-color;
+  padding: 8px 0 8px 0;
+  background-color: $accent-color;
   font-family: Roboto;
   font-weight: normal;
   font-size: 16px;
   line-height: 18px;
   border: none;
-  outline:none;
+  outline: none;
   border-radius: 4px;
   cursor: pointer;
   width: 80px;
@@ -364,12 +364,10 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 18px;
-  color:$accent-color;
+  color: $accent-color;
   white-space: nowrap;
 }
-
 
 .input-field-label {
   display: inline-block;
 }
-
