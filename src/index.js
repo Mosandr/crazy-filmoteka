@@ -21,6 +21,7 @@ const authorization = new Auth();
 const modalCreate = new ModalCreate();
 
 ui.init();
+ui.btnDisabledChange();
 
 // modalCreate.modalTeamCross();
 
