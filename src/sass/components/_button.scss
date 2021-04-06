@@ -16,8 +16,17 @@
   border: none;
 }
 .data__modal__film-add-to-watched.disabled {
-  background-color: black;
+  background-color: #394047;
 }
 .data__modal__film-add-to-queue.disabled {
-  background-color: black;
+  background-color: #394047;
+}
+.data__modal__film-add-to-watched:hover.disabled,
+.data__modal__film-add-to-watched:focus.disabled,
+.data__modal__film-add-to-queue:hover.disabled,
+.data__modal__film-add-to-queue:focus.disabled {
+  background-color: #394047;
+  color: #ffffff;
+  outline: none;
+  border: none;
 }

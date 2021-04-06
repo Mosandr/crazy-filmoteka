@@ -34,7 +34,6 @@ export default class ServiceDB {
     //get info from user's collection
     const list = await this.db.collection('users').doc(user.uid).get();
     const actualListQueue = list.data().queue;
-    console.log(actualListQueue);
     this.queueBtnHeader.addEventListener(
       'click',
       this.renderGalleryOnBtnClick.bind(this, actualListQueue),
@@ -44,24 +43,8 @@ export default class ServiceDB {
     //get info from user's collection
     const list = await this.db.collection('users').doc(user.uid).get();
     const actualListWatched = list.data().watched;
-    this.galleryListRef.innerHTML = '';
-    this.galleryListRef.insertAdjacentHTML(
-      'afterbegin',
-      libraryGalleryCardTmp(actualListWatched),
-    );
-    const genres = document.querySelectorAll('.card-genres');
-    genres.forEach(el => {
-      el.textContent = el.textContent.trim().split(' ').join(', ');
-    });
-    const years = document.querySelectorAll('.year-of-release');
-    years.forEach(el => {
-      el.textContent = el.textContent.trim().split('').splice(0, 4).join('');
-    });
-    console.log(actualListWatched);
-    this.libraryBtn.addEventListener(
-      'click',
-      this.renderGalleryOnBtnClick.bind(this, actualListWatched),
-    );
+    this.renderGalleryOnBtnClick(actualListWatched);
+
     this.watchBtnHeader.addEventListener(
       'click',
       this.renderGalleryOnBtnClick.bind(this, actualListWatched),
@@ -89,7 +72,6 @@ export default class ServiceDB {
       const newList = watchedList.data().watched;
       const newFilm = JSON.parse(this.watchBtn.dataset.ob);
       if (newList.some(e => e.id === newFilm.id)) {
-        alert('Already add');
         return newList;
       } else {
         newList.push(newFilm);
@@ -107,7 +89,6 @@ export default class ServiceDB {
     const newList = queueList.data().queue;
     const newFilm = JSON.parse(this.queueBtn.dataset.ob);
     if (newList.some(e => e.id === newFilm.id)) {
-      alert('Already add');
       return newList;
     } else {
       newList.push(newFilm);
@@ -150,62 +131,50 @@ export default class ServiceDB {
       );
     });
   }
+  loginMessage(user) {
+    const loginMessage = document.querySelector('.login-message');
+    if (user) {
+      loginMessage.textContent = '';
+    } else {
+      loginMessage.textContent = 'Login to see library';
+    }
+  }
+  async dataForQueuePagination(user, page) {
+    const filmList = await this.db.collection('users').doc(user.uid).get();
+    const queueList = filmList.data().queue;
+    const numberOfFilms = queueList.length;
+    const paginationInfo = {};
+    paginationInfo.num = numberOfFilms;
+
+    if (Math.floor((numberOfFilms - 1) / 20) === 0) {
+      paginationInfo.films = queueList;
+      console.log(paginationInfo);
+      return paginationInfo;
+    } else {
+      const idxStart = (page - 1) * 20;
+      const filmsForPage = queueList.splice(idxStart, 20);
+      paginationInfo.films = filmsForPage;
+      console.log(paginationInfo);
+      return paginationInfo;
+    }
+  }
+
+  async dataForWatchedPagination(user, page) {
+    const filmList = await this.db.collection('users').doc(user.uid).get();
+    const watchedList = filmList.data().watched;
+    const numberOfFilms = watchedList.length;
+    const paginationInfo = {};
+    paginationInfo.num = numberOfFilms;
+    if (Math.floor((numberOfFilms - 1) / 20) === 0) {
+      paginationInfo.films = watchedList;
+      return paginationInfo;
+    } else {
+      const idxStart = (page - 1) * 20;
+      const filmsForPage = watchedList.splice(idxStart, 20);
+
+      paginationInfo.films = filmsForPage;
+      console.log(paginationInfo);
+      return paginationInfo;
+    }
+  }
 }
-
-// =====
-
-// export default class ServerActive {
-//   constructor() {
-//     this.auth = firebase.auth();
-//     this.db = firebase.firestore();
-//     this.watchBtn = document.querySelector('.data__modal__film-add-to-watched');
-//     this.queueBtn = document.querySelector('.data__modal__film-add-to-queue');
-//   }
-
-//   async getActualQueueLists(user) {
-//     //get info from user's collection
-//     const list = await this.db.collection('users').doc(user.uid).get();
-//     const actualListQueue = list.data().queue;
-//     console.log(actualListQueue);
-//     this.queueBtnHeader.addEventListener(
-//       'click',  e => {
-//         e.preventDefault();
-
-//       this.matchMovieQueue.bind(this),
-//     );
-//   }
-// }
-
-//   async getActualWatchedLists(user) {
-//     //get info from user's collection
-//     const list = await this.db.collection('users').doc(user.uid).get();
-//     const actualListWatched = list.data().watched;
-//     console.log(actualListWatched);
-//     this.watchBtnHeader.addEventListener(
-//       'click',  e => {
-//         e.preventDefault();
-
-//       this.matchMovieWatched.bind(this),
-//     );
-//   }
-// }
-
-//   matchMovieWatched () {
-//       const movieWatched = getActualWatchedLists();
-//       const findWatchedById = movieWatched.id.find(item => intem === id);
-
-//       if (findWatchedById) {
-//         watchBtn.classList.add('is-clicked');
-//       }
-//     }
-
-//   matchMovieQueue () {
-//      const movieQueue = getActualQueueLists();
-//      const findQueueById = movieQueue.id.find(item => intem === id)
-
-//      if (findQueuedById) {
-//      queueBtn.classList.add('is-clicked');
-//      }
-//    }
-
-// }
