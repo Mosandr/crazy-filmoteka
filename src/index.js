@@ -2,13 +2,12 @@ import './sass/styles.scss';
 
 import header from './partials/header.html';
 import footer from './partials/footer.html';
+import auth from './partials/modals.html';
 
 import UiService from './js/uiService';
-import auth from './partials/modals.html';
 import ServiceDB from './js/serviceDB.js';
 import Auth from './js/auth.js';
 
-// import Preloader from './js/preloader-backdrop';
 import ModalCreate from './js/initCardModal';
 
 const bodyRef = document.querySelector('BODY');
