@@ -131,8 +131,50 @@ export default class ServiceDB {
       );
     });
   }
-  loginMessage() {
+  loginMessage(user) {
     const loginMessage = document.querySelector('.login-message');
-    loginMessage.textContent = 'Login to see library';
+    if (user) {
+      loginMessage.textContent = '';
+    } else {
+      loginMessage.textContent = 'Login to see library';
+    }
+  }
+  async dataForQueuePagination(user, page) {
+    const filmList = await this.db.collection('users').doc(user.uid).get();
+    const queueList = filmList.data().queue;
+    const numberOfFilms = queueList.length;
+    const paginationInfo = {};
+    paginationInfo.num = numberOfFilms;
+
+    if (Math.floor((numberOfFilms - 1) / 20) === 0) {
+      paginationInfo.films = queueList;
+      console.log(paginationInfo);
+      return paginationInfo;
+    } else {
+      const idxStart = (page - 1) * 20;
+      const filmsForPage = queueList.splice(idxStart, 20);
+      paginationInfo.films = filmsForPage;
+      console.log(paginationInfo);
+      return paginationInfo;
+    }
+  }
+
+  async dataForWatchedPagination(user, page) {
+    const filmList = await this.db.collection('users').doc(user.uid).get();
+    const watchedList = filmList.data().watched;
+    const numberOfFilms = watchedList.length;
+    const paginationInfo = {};
+    paginationInfo.num = numberOfFilms;
+    if (Math.floor((numberOfFilms - 1) / 20) === 0) {
+      paginationInfo.films = watchedList;
+      return paginationInfo;
+    } else {
+      const idxStart = (page - 1) * 20;
+      const filmsForPage = watchedList.splice(idxStart, 20);
+
+      paginationInfo.films = filmsForPage;
+      console.log(paginationInfo);
+      return paginationInfo;
+    }
   }
 }

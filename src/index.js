@@ -35,11 +35,16 @@ serviceDB.auth.onAuthStateChanged(user => {
     serviceDB.renewQueueList(user);
     serviceDB.renewWatchedList(user);
     serviceDB.getActualQueueLists(user);
+    serviceDB.loginMessage(user);
     if (ui.isMyLibraryPageOpen()) {
       serviceDB.getActualWatchedLists(user);
+      serviceDB.dataForQueuePagination(user, 2);
+      serviceDB.dataForWatchedPagination(user, 2);
     }
   } else {
     authorization.setupUI();
-    serviceDB.loginMessage();
+    if (ui.isMyLibraryPageOpen()) {
+      serviceDB.loginMessage();
+    }
   }
 });
