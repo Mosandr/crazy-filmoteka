@@ -121,6 +121,7 @@ export default class ServiceDB {
       this.handleQueueBtnClick.bind(this, user),
     );
   }
+
   handleQueueBtnClick(user) {
     this.addItemsToQueueList(user).then(data => {
       this.db.collection('users').doc(user.uid).set(
@@ -131,6 +132,7 @@ export default class ServiceDB {
       );
     });
   }
+
   loginMessage(user) {
     const loginMessage = document.querySelector('.login-message');
     if (user) {
@@ -139,6 +141,7 @@ export default class ServiceDB {
       loginMessage.textContent = 'Please Login to see your library';
     }
   }
+
   async dataForQueuePagination(user, page) {
     const filmList = await this.db.collection('users').doc(user.uid).get();
     const queueList = filmList.data().queue;
@@ -148,13 +151,11 @@ export default class ServiceDB {
 
     if (Math.floor((numberOfFilms - 1) / 20) === 0) {
       paginationInfo.films = queueList;
-      console.log(paginationInfo);
       return paginationInfo;
     } else {
       const idxStart = (page - 1) * 20;
       const filmsForPage = queueList.splice(idxStart, 20);
       paginationInfo.films = filmsForPage;
-      console.log(paginationInfo);
       return paginationInfo;
     }
   }
@@ -171,9 +172,7 @@ export default class ServiceDB {
     } else {
       const idxStart = (page - 1) * 20;
       const filmsForPage = watchedList.splice(idxStart, 20);
-
       paginationInfo.films = filmsForPage;
-      console.log(paginationInfo);
       return paginationInfo;
     }
   }
