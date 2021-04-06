@@ -3,82 +3,6 @@
   justify-content: flex-end;
 }
 
-.data__modal__film-close-btn {
-  border: none;
-  background-color: #fff;
-}
-
-// .modal__btns__down {
-//   display: inline-flex;
-//   justify-content: space-between;
-// }
-
-.data__modal__film-add-to-watched,
-.data__modal__film-add-to-queue {
-  background-color: #ff6b01;
-  width: 113px;
-  height: 44px;
-  border-radius: 5px;
-  border: none;
-  margin-right: 15px;
-  color: #fff;
-  font-size: 12px;
-
-  @media screen and (min-width: $tablet) {
-    width: 125px;
-  }
-
-  @media screen and (min-width: $desktop) {
-    width: 136px;
-  }
-}
-
-.modal__film__card-content {
-  display: flex;
-  // display: block;
-  // justify-content: center;
-  // padding: 48px, 20px;
-
-  // @media screen and (min-width: $tablet) {
-  //   justify-content: space-around;
-  // }
-}
-
-.modal__film__card-information {
-  @media screen and (min-width: $tablet) {
-    display: flex;
-  }
-}
-
-.modal__gallery__img-container {
-  padding-bottom: 30px;
-  @media screen and (min-width: $tablet) {
-    width: 309px;
-  }
-
-  @media screen and (min-width: $desktop) {
-    width: 441px;
-    max-height: 478px;
-  }
-}
-
-.modal__gallery__img {
-  width: 240px;
-  border-radius: 5px;
-
-  @media screen and (min-width: $tablet) {
-    width: 264px;
-  }
-
-  @media screen and (min-width: $desktop) {
-    width: 496px;
-    object-fit: cover;
-    overflow: hidden;
-    width: 396px;
-    max-height: 470px;
-  }
-}
-
 .data__modal__film {
   padding: 20px;
   max-width: 280px;
@@ -94,7 +18,7 @@
 
   @media screen and (min-width: $tablet) {
     max-width: 618px;
-    min-height: auto;
+    min-height: 562px;
     padding-bottom: 20px;
   }
 
@@ -104,20 +28,59 @@
   }
 }
 
+.data__modal__film-close-btn {
+  border: none;
+  background-color: #fff;
+}
+
+.modal__film__card-content {
+  display: block;
+
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.modal__film__card-information {
+  @media screen and (min-width: $tablet) {
+    display: flex;
+  }
+}
+
+.modal__gallery__img-container {
+  padding-bottom: 30px;
+
+  @media screen and (min-width: $tablet) {
+    width: 309px;
+    padding-bottom: 0px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    padding-right: 20px;
+    padding-bottom: 0px;
+    width: 420px;
+  }
+}
+
+.modal__gallery__img {
+  width: 240px;
+  border-radius: 5px;
+
+  @media screen and (min-width: $tablet) {
+    width: 264px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 375px;
+    padding-left: 40px;
+  }
+}
+
 .modal__film__card-text {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: bold;
-
-  @media screen and (min-width: $tablet) {
-    width: 309px;
-    padding-left: 16px;
-  }
-
-  @media screen and (min-width: $desktop) {
-    width: 441px;
-    padding-left: 30px;
-  }
 }
 
 .modal__gallery__movie-title {
@@ -166,36 +129,49 @@
 .modal__gallery__movie-text {
   font-size: 12px;
   line-height: 1.67;
+  padding-bottom: 20px;
 }
 
-// .modal__btns__down {
-//   @media screen and (min-width: $tablet) {
-//     //position: absolute;
-//     top: 390px;
-//     padding-left: 300px;
-//     //  padding-top: 20px;
-//   }
+.modal__btns__down {
+  align-items: baseline;
 
-//   @media screen and (min-width: $desktop) {
-//     //position: absolute;
-//     top: 470px;
-//     padding-left: 450px;
-//     //  padding-top: 20px;
-//   }
-// }
+  @media screen and (min-width: $tablet) {
+    display: block;
+  }
+}
+
+.data__modal__film-add-to-watched,
+.data__modal__film-add-to-queue {
+  background-color: #ff6b01;
+  width: 90px;
+  height: 44px;
+  border-radius: 5px;
+  border: none;
+  margin-right: 15px;
+  color: #fff;
+  font-size: 9px;
+
+  @media screen and (min-width: $tablet) {
+    width: 100px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 136px;
+  }
+}
 
 .data__modal__film-add-to-watched:hover,
 .data__modal__film-add-to-watched:focus,
 .data__modal__film-add-to-queue:hover,
 .data__modal__film-add-to-queue:focus {
   background-color: #fff;
-  width: 113px;
+  width: 90px;
   height: 44px;
   border-radius: 5px;
   border: 1px solid black;
   border-color: black;
   color: black;
-  font-size: 12px;
+  font-size: 9px;
 
   @media screen and (min-width: $tablet) {
     width: 125px;
