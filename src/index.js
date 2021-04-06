@@ -40,5 +40,6 @@ serviceDB.auth.onAuthStateChanged(user => {
     }
   } else {
     authorization.setupUI();
+    serviceDB.loginMessage();
   }
 });
