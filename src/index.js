@@ -20,12 +20,9 @@ mainRef.insertAdjacentHTML('afterend', footer);
 const ui = new UiService();
 const serviceDB = new ServiceDB();
 const authorization = new Auth();
-const modalCreate = new ModalCreate();
 
 ui.init();
 ui.btnDisabledChange();
-
-// modalCreate.modalTeamCross();
 
 authorization.init();
 
