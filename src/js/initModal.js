@@ -10,7 +10,7 @@ export default function initModal() {
         const over = document.querySelector('.over');
         over.classList.remove('is-shown');
 
-        location.reload();
+        // location.reload();
       },
     };
     M.Modal.init(cardModals, options);
