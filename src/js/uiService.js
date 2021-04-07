@@ -201,24 +201,16 @@ export default class UiService {
           newList = newList.map(el => el.id);
 
           if (newList.some(el => el === +movieId)) {
-            this.refs.watchBtn.disabled = true;
-            this.refs.watchBtn.classList.add('disabled');
-            this.refs.watchBtn.textContent = 'ADDED TO WATCHED';
+            this.refs.watchBtn.textContent = 'REMOVE FROM WATCHED';
           } else {
-            this.refs.watchBtn.disabled = false;
-            this.refs.watchBtn.classList.remove('disabled');
             this.refs.watchBtn.textContent = 'ADD TO WATCHED';
           }
           let newListQue = list.data().queue;
           newListQue = newListQue.map(el => el.id);
 
           if (newListQue.some(el => el === +movieId)) {
-            this.refs.queueBtn.disabled = true;
-            this.refs.queueBtn.classList.add('disabled');
-            this.refs.queueBtn.textContent = 'ADDED TO QUEUE';
+            this.refs.queueBtn.textContent = 'REMOVE FROM QUEUE';
           } else {
-            this.refs.queueBtn.disabled = false;
-            this.refs.queueBtn.classList.remove('disabled');
             this.refs.queueBtn.textContent = 'ADD TO QUEUE';
           }
         });

@@ -73,15 +73,15 @@ export default class ServiceDB {
   async addItemsToWattchedList(user) {
     try {
       const watchedList = await this.db.collection('users').doc(user.uid).get();
-      const newList = watchedList.data().watched;
+      let newList = watchedList.data().watched;
       const newFilm = JSON.parse(this.watchBtn.dataset.ob);
       if (newList.some(e => e.id === newFilm.id)) {
+        newList = newList.filter(e => e.id !== newFilm.id);
+        this.watchBtn.textContent = 'ADD TO WATCHED';
         return newList;
       } else {
         newList.push(newFilm);
-        this.watchBtn.disabled = true;
-        this.watchBtn.classList.add('disabled');
-        this.watchBtn.textContent = 'ADDED TO WATCHED';
+        this.watchBtn.textContent = 'REMOVE FROM WATCHED';
         return newList;
       }
     } catch (e) {
@@ -90,15 +90,15 @@ export default class ServiceDB {
   }
   async addItemsToQueueList(user) {
     const queueList = await this.db.collection('users').doc(user.uid).get();
-    const newList = queueList.data().queue;
+    let newList = queueList.data().queue;
     const newFilm = JSON.parse(this.queueBtn.dataset.ob);
-    if (newList.some(e => e.id === newFilm.id)) {
+    if (newList.find(e => e.id === newFilm.id)) {
+      newList = newList.filter(e => e.id !== newFilm.id);
+      this.queueBtn.textContent = 'ADD TO QUEUE';
       return newList;
     } else {
       newList.push(newFilm);
-      this.queueBtn.disabled = true;
-      this.queueBtn.classList.add('disabled');
-      this.queueBtn.textContent = 'ADDED TO QUEUE';
+      this.queueBtn.textContent = 'REMOVE FROM QUEUE';
       return newList;
     }
   }
