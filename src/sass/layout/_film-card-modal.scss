@@ -6,10 +6,9 @@
 .data__modal__film {
   padding: 20px;
   max-width: 280px;
-  min-height: 958px;
+  max-height: 958px;
   width: 100%;
   background-color: #fff;
-  overflow: auto;
 
   @media (min-width: 320px) {
     position: absolute;
@@ -18,13 +17,12 @@
 
   @media screen and (min-width: $tablet) {
     max-width: 618px;
-    min-height: 562px;
+
     padding-bottom: 20px;
   }
 
   @media screen and (min-width: $desktop) {
     max-width: 882px;
-    min-height: 568px;
   }
 }
 
@@ -133,21 +131,21 @@
 }
 
 .modal__btns__down {
-  align-items: baseline;
-
   @media screen and (min-width: $tablet) {
     display: block;
   }
 }
-
+.data__modal__film-add-to-watched {
+  margin-right: 15px;
+}
 .data__modal__film-add-to-watched,
 .data__modal__film-add-to-queue {
+  display: block;
   background-color: #ff6b01;
-  width: 90px;
+  width: 112px;
   height: 44px;
   border-radius: 5px;
   border: none;
-  margin-right: 15px;
   color: #fff;
   font-size: 9px;
 
@@ -165,7 +163,7 @@
 .data__modal__film-add-to-queue:hover,
 .data__modal__film-add-to-queue:focus {
   background-color: #fff;
-  width: 90px;
+  width: 112px;
   height: 44px;
   border-radius: 5px;
   border: 1px solid black;
@@ -181,9 +179,7 @@
     width: 136px;
   }
 }
-.modal {
-  overflow-y: auto;
-}
+
 .over {
   position: fixed;
   z-index: 0;
@@ -191,7 +187,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 93px 15px;
+  padding: 15px 15px;
   background-color: rgba(0, 0, 0, 0.2);
   opacity: 0;
   pointer-events: none;
@@ -200,4 +196,11 @@
 .is-shown {
   opacity: 1;
   pointer-events: auto;
+}
+.modal-btns {
+  display: flex;
+  justify-content: center;
+  @media screen and (min-width: $desktop) {
+    justify-content: start;
+  }
 }
