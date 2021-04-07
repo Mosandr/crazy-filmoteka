@@ -45,6 +45,11 @@
   object-fit: cover;
   border-radius: 5px;
   overflow: hidden;
+  background-color: grey;
+  background-image: url('./../images/logo.png');
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  background-position: center;
 
   @media (min-width: $tablet) {
     width: 100%;

@@ -1,6 +1,13 @@
 <li class="gallery__item modal-trigger" data-target="modal-card" data-id="{{id}}">
     <div class="gallery__img-container" data-id="{{id}}">
-        <img class="gallery__img" src="https://image.tmdb.org/t/p/w500{{ poster_path}}" alt="{{title}} movie poster">
+
+
+        {{#if poster_path}} <img class="gallery__img" src="https://image.tmdb.org/t/p/w500{{ poster_path}}"
+            alt="{{title}} movie poster">
+        {{else}}
+        <img class="gallery__img" src="" alt="Movie poster not available">
+        {{/if}}
+
     </div>
     <h3 class="gallery__movie-title">{{title}}</h3>
     <p class="gallery__movie-genre">{{genres}} | {{year}}
