@@ -1,5 +1,4 @@
 import 'materialize-css/dist/js/materialize.min.js';
-import Header from './header';
 
 export default function initModal() {
   document.addEventListener('DOMContentLoaded', function () {
