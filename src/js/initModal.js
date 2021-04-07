@@ -2,16 +2,26 @@ import 'materialize-css/dist/js/materialize.min.js';
 
 export default function initModal() {
   document.addEventListener('DOMContentLoaded', function () {
-    const elems = document.querySelectorAll('.modal');
+    const authModals = document.querySelectorAll('.auth-modal');
+    M.Modal.init(authModals);
+    const cardModals = document.querySelectorAll('.data__modal__film');
     const options = {
       onCloseEnd: function () {
         const over = document.querySelector('.over');
         over.classList.remove('is-shown');
+
+        // location.reload();
+      },
+    };
+    M.Modal.init(cardModals, options);
+    const teamModals = document.querySelectorAll('.modal-team-container');
+    const optionsTeam = {
+      onCloseEnd: function () {
         const overTeam = document.querySelector('.team-overlay');
         overTeam.classList.remove('is-shown-team');
       },
     };
-    M.Modal.init(elems, options);
+    M.Modal.init(teamModals, optionsTeam);
   });
 
   // close modal-login while opening modal-signup

@@ -75,7 +75,7 @@ export default class ServiceDB {
       el.textContent = el.textContent.trim().split('').splice(0, 4).join('');
     });
   }
-  async addItemsToWattchedList(user) {
+  async changeWattchedList(user) {
     try {
       const watchedList = await this.db.collection('users').doc(user.uid).get();
       let newList = watchedList.data().watched;
@@ -93,7 +93,7 @@ export default class ServiceDB {
       console.log(e);
     }
   }
-  async addItemsToQueueList(user) {
+  async changeQueueList(user) {
     const queueList = await this.db.collection('users').doc(user.uid).get();
     let newList = queueList.data().queue;
     const newFilm = JSON.parse(this.queueBtn.dataset.ob);
@@ -107,6 +107,7 @@ export default class ServiceDB {
       return newList;
     }
   }
+
   renewWatchedList(user) {
     this.watchBtn.addEventListener(
       'click',
@@ -114,7 +115,7 @@ export default class ServiceDB {
     );
   }
   handleWatchBtnClick(user) {
-    this.addItemsToWattchedList(user).then(data => {
+    this.changeWattchedList(user).then(data => {
       this.db.collection('users').doc(user.uid).set(
         {
           watched: data,
@@ -132,7 +133,7 @@ export default class ServiceDB {
   }
 
   handleQueueBtnClick(user) {
-    this.addItemsToQueueList(user).then(data => {
+    this.changeQueueList(user).then(data => {
       this.db.collection('users').doc(user.uid).set(
         {
           queue: data,

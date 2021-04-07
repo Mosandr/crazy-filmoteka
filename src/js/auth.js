@@ -40,7 +40,6 @@ export default class Auth {
 
         this.refs.signupForm.reset();
         this.refs.signupForm.querySelector('.error').innerHTML = '';
-        location.reload();
       })
       .catch(err => {
         this.refs.signupForm.querySelector('.error').innerHTML = err.message;
