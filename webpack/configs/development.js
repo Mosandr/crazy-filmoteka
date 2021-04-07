@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPartialsPlagin = require('html-webpack-partials-plugin');
+// const path = require('path');
 const paths = require('../utils/paths');
 
 module.exports = env => ({
@@ -19,8 +21,19 @@ module.exports = env => ({
     ],
   },
   plugins: [
+    // new HtmlWebpackPartialsPlagin({
+    //   path: path.join(__dirname, '../../src/partials/header.html'),
+    //   location: 'header',
+    //   template_filename: ['index.html'],
+    // }),
+    // new HtmlWebpackPartialsPlagin({
+    //   path: path.join(__dirname, '../../src/partials/footer.html'),
+    //   location: 'footer',
+    //   template_filename: ['index.html'],
+    // }),
     new HtmlWebpackPlugin({
       template: './index.html',
+      favicon: './images/logo.png',
     }),
   ],
   devServer: {

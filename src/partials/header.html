@@ -1,0 +1,67 @@
+<header data-js="page-header" class="page-header">
+  <div class="container ">
+  <nav class="site-nav">
+    <a class="logo" href="./index.html">
+      <svg class=" logo-svg" width="24px" height="24px" alt="logo">
+        <use href="../images/sprite.svg#logo"></use>
+      </svg>
+      <span class="logo-text">Filmoteka</span>
+    </a>
+    <div class="container-nav">
+      <ul class="site-nav-link list">
+        <li  data-js="home-btn" class="item current">
+          <a href="./?home"
+            ><span>HOME</span>
+        </li>
+        <li data-js="lib-btn" class="item">
+          <a href="./?my-library"
+            ><span>MY LIBRARY</span>
+        </li>
+      </ul>
+      <div id="auth" class="user-registration">
+        <p class="logged-out is-hidden">
+          <a href="#" class="" id="logout">
+            <i class="material-icons"> logout </i>
+          </a>
+        </p>
+        <p class="logged-in is-hidden">
+          <a href="#" class="modal-trigger" data-target="modal-login">
+            <i class="material-icons"> perm_identity </i>
+          </a>
+        </p>
+      </div>
+    </div>
+   
+  </nav>
+ 
+     
+    <form  data-js="search-form" class="search-form" id="search-form">
+        <label class="search-form-label">
+          <input
+          class="search-form-input"
+          type="text"
+          name="query"
+          autocomplete="off"
+          placeholder="Поиск фильмов"
+        />
+        <button type="submit" class="input-search-btn">
+          <svg class="input-search-svg" width="12px" height="12px" alt="input-search">
+            <use class="input-search-svg-icon" href="../images/sprite.svg#input-search"></use>
+          </svg>
+        </button>
+        <p class="search-form__error"></p>
+        </label>
+    </form>  
+
+    
+
+    <div class="header-button">
+      <button data-js="button-watch" class=" button watch is-hidden is-active" type="button">
+        <span>WATCHED</span>
+      </button>
+      <button data-js="button-queue" class=" button queue is-hidden" type="button">
+        <span>QUEUE</span>
+      </button>
+    </div>
+  </div>
+</header>

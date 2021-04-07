@@ -1,0 +1,31 @@
+/*
+ * Главный файл стилей.
+ * Все паршалы подключаются сюда.
+ */
+//materialize-css
+@import 'materialize-css/sass/components/_color-variables.scss';
+@import 'materialize-css/sass/components/_color-classes.scss';
+@import 'materialize-css/sass/components/_variables.scss';
+@import 'materialize-css/sass/components/_modal.scss';
+@import 'materialize-css/sass/components/_global.scss';
+@import 'materialize-css/sass/components/_preloader.scss';
+
+// utils
+@import './utils/normalize';
+@import './utils/variables';
+
+//base
+@import './base/common';
+@import './base/container';
+
+// components
+@import './components/button';
+
+//layout
+@import './layout/header';
+@import './layout/gallery';
+@import './layout/pagination-bar';
+@import './layout/film-card-modal';
+@import './layout/footer';
+@import './layout/preloader-backdrop';
+@import './layout/team-modal';

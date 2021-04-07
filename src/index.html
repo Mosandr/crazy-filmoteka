@@ -4,9 +4,100 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <title>Filmoteka</title>
   </head>
   <body>
-    <h1>Our super Filmoteka!</h1>
+    <div class="backdrop-container is-hidden">
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-yellow-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <main>
+      <section class="gallery">
+        <div class="container">
+          <ul
+            class="gallery__list"
+            data-js="movie-gallery"
+            data-totalItems="0"
+          ></ul>
+          <div id="movie-pagination"></div>
+          <div class="login-message"></div>
+        </div>
+        <script type="text/html" id="pagination-template">
+          <ul class="movie-pagination__list">
+            <% if ((previous)) {%>
+            <li class="movie-pagination__item movie-pagination__item--prev">
+              <a
+                class="movie-pagination__link"
+                href="<%=preparedPreLink + previous %>"
+                >&#129120;
+              </a>
+            </li>
+            <% } %> <% if ((first)&&(current > 4)) { %>
+            <li class="movie-pagination__item pagination__first-last">
+              <a
+                class="movie-pagination__link"
+                href="<%=preparedPreLink + first %>"
+                ><%=first%></a
+              >
+            </li>
+            <li class="movie-pagination__item pagination__dots">...</li>
+            <% } %> <% for ( var i = 0; i < range.length; i++ ) { %> <% if
+            (current === range[i]) {%>
+            <li class="movie-pagination__item">
+              <a
+                class="movie-pagination__link movie-pagination__link--current-page"
+                href="<%=preparedPreLink %><%=range[i]%>"
+                ><%=current%></a
+              >
+            </li>
+            <% } %> <% if (current !== range[i]){%>
+            <li class="movie-pagination__item">
+              <a
+                class="movie-pagination__link"
+                href="<%=preparedPreLink %><%=range[i]%>"
+                ><%=range[i]%></a
+              >
+            </li>
+            <% } %> <% } %> <% if ((last)&&(current < (last - 3)) ){%>
+            <li class="movie-pagination__item pagination__dots">...</li>
+            <li class="movie-pagination__item pagination__first-last">
+              <a
+                class="movie-pagination__link"
+                href="<%=preparedPreLink + last %>"
+                ><%=last%></a
+              >
+            </li>
+            <% } %> <% if (next) { %>
+            <li class="movie-pagination__item movie-pagination__item--next">
+              <a
+                class="movie-pagination__link"
+                href="<%=preparedPreLink + next %>"
+                >&#129122;</a
+              >
+            </li>
+            <% } %>
+          </ul>
+        </script>
+      </section>
+    </main>
   </body>
 </html>
