@@ -43,6 +43,7 @@ serviceDB.auth.onAuthStateChanged(user => {
     authorization.setupUI();
     if (Location.isMyLibraryPageOpen()) {
       serviceDB.loginMessage();
+      ui.refs.pageFooter.style.position = 'fixed';
     }
   }
 });
