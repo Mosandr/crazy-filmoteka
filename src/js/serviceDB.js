@@ -47,7 +47,6 @@ export default class ServiceDB {
     //get info from user's collection
     const list = await this.db.collection('users').doc(user.uid).get();
     const actualListWatched = list.data().watched;
-    console.dir(actualListWatched);
     this.renderGalleryOnBtnClick(actualListWatched);
 
     if (actualListWatched.length === 0) {
