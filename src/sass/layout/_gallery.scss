@@ -39,10 +39,13 @@
   }
 }
 
+.gallery__img {
+  object-fit: cover;
+}
+
 .gallery__img-container {
   width: 280px;
   height: 398px;
-  object-fit: cover;
   border-radius: 5px;
   overflow: hidden;
   background-color: grey;
