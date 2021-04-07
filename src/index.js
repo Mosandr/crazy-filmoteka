@@ -25,6 +25,7 @@ const modalCreate = new ModalCreate();
 ui.init();
 
 authorization.init();
+
 modalCreate.modalTeamCross();
 
 serviceDB.auth.onAuthStateChanged(user => {
