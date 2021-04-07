@@ -37,8 +37,10 @@ export default class Auth {
       })
       .then(() => {
         M.Modal.getInstance(this.refs.modalSignUp).close();
+
         this.refs.signupForm.reset();
         this.refs.signupForm.querySelector('.error').innerHTML = '';
+        location.reload();
       })
       .catch(err => {
         this.refs.signupForm.querySelector('.error').innerHTML = err.message;
@@ -47,7 +49,9 @@ export default class Auth {
 
   logout(event) {
     event.preventDefault();
-    this.auth.signOut().then(() => {});
+    this.auth.signOut().then(() => {
+      location.reload();
+    });
   }
 
   login(event) {
@@ -60,6 +64,7 @@ export default class Auth {
         M.Modal.getInstance(this.refs.modalLogin).close();
         this.refs.loginForm.reset();
         this.refs.loginForm.querySelector('.error').innerHTML = '';
+        location.reload();
       })
       .catch(err => {
         this.refs.loginForm.querySelector('.error').innerHTML = err.message;

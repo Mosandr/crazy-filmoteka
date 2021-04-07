@@ -158,11 +158,12 @@
     width: 136px;
   }
 }
-
-.data__modal__film-add-to-watched:hover,
 .data__modal__film-add-to-watched:focus,
-.data__modal__film-add-to-queue:hover,
 .data__modal__film-add-to-queue:focus {
+  outline: none;
+}
+.data__modal__film-add-to-watched:hover,
+.data__modal__film-add-to-queue:hover {
   background-color: #fff;
   width: 112px;
   height: 44px;
