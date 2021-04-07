@@ -7,6 +7,7 @@ import auth from './partials/modals.html';
 import UiService from './js/uiService';
 import ServiceDB from './js/serviceDB.js';
 import Auth from './js/auth.js';
+import ModalCreate from './js/initCardModal.js';
 
 const bodyRef = document.querySelector('BODY');
 const mainRef = document.querySelector('MAIN');
@@ -18,10 +19,12 @@ mainRef.insertAdjacentHTML('afterend', footer);
 const ui = new UiService();
 const serviceDB = new ServiceDB();
 const authorization = new Auth();
+const modalCreate = new ModalCreate();
 
 ui.init();
 
 authorization.init();
+modalCreate.modalTeamCross();
 
 serviceDB.auth.onAuthStateChanged(user => {
   if (user) {
