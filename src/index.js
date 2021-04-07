@@ -8,6 +8,7 @@ import UiService from './js/uiService';
 import ServiceDB from './js/serviceDB.js';
 import Auth from './js/auth.js';
 import ModalCreate from './js/initCardModal.js';
+import Location from './js/location';
 
 const bodyRef = document.querySelector('BODY');
 const mainRef = document.querySelector('MAIN');
@@ -33,14 +34,14 @@ serviceDB.auth.onAuthStateChanged(user => {
     serviceDB.renewWatchedList(user);
     serviceDB.getActualQueueLists(user);
     serviceDB.loginMessage(user);
-    if (ui.isMyLibraryPageOpen()) {
+    if (Location.isMyLibraryPageOpen()) {
       serviceDB.getActualWatchedLists(user);
       serviceDB.dataForQueuePagination(user, 2);
       serviceDB.dataForWatchedPagination(user, 2);
     }
   } else {
     authorization.setupUI();
-    if (ui.isMyLibraryPageOpen()) {
+    if (Location.isMyLibraryPageOpen()) {
       serviceDB.loginMessage();
     }
   }

@@ -25,6 +25,11 @@ export default class Header {
       'click',
       this.onMyLibraryLinkClick.bind(this),
     );
+
+    this.refs.searcForm.addEventListener(
+      'submit',
+      this.onEmptySearchSubmit.bind(this),
+    );
   }
 
   onMyLibraryLinkClick(event) {
@@ -57,6 +62,14 @@ export default class Header {
       'click',
       this.onQueueClick.bind(this),
     );
+  }
+
+  onEmptySearchSubmit(event) {
+    if (event.currentTarget.query.value.trim() === '') {
+      event.preventDefault();
+      event.currentTarget.querySelector('.search-form__error').textContent =
+        'Search query was empty. Enter the movie name and try again';
+    }
   }
 
   onWatchedClick() {

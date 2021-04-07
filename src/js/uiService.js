@@ -3,6 +3,7 @@ import MovieGallery from './movie-gallery';
 import initModal from './initModal.js';
 import ModalCreate from './initCardModal';
 import ServiceDB from './serviceDB.js';
+import Location from './location';
 
 const serviceDB = new ServiceDB();
 
@@ -28,36 +29,6 @@ export default class UiService {
     return refs;
   }
 
-  getCurrentPage() {
-    const url = location.href;
-
-    if (!url.includes('page=')) return 1;
-
-    let index = url.indexOf('page=') + String('page=').length;
-
-    return url.slice(index);
-  }
-
-  isMyLibraryPageOpen() {
-    const url = location.href;
-    if (url.includes('my-library')) return true;
-    return false;
-  }
-
-  isSearchSubmited() {
-    const url = location.href;
-    if (url.includes('query')) return true;
-    return false;
-  }
-
-  onSearchSubmit(event) {
-    if (event.currentTarget.query.value.trim() === '') {
-      event.preventDefault();
-      event.currentTarget.querySelector('.search-form__error').textContent =
-        'Search query was empty. Enter the movie name and try again';
-    }
-  }
-
   async init() {
     this.btnDisabledChange();
     const header = new Header();
@@ -74,25 +45,21 @@ export default class UiService {
       this.onMovieItemClick.bind(this),
     );
 
-    this.refs.pageHeader
-      .querySelector('.search-form')
-      .addEventListener('submit', this.onSearchSubmit);
-
-    if (this.isMyLibraryPageOpen()) {
+    if (Location.isMyLibraryPageOpen()) {
       header.onMyLibraryLinkClick();
 
       // рисуем просмотренные фильмы в галерею
       return;
     }
 
-    if (this.isSearchSubmited()) {
+    if (Location.isSearchSubmited()) {
       const query = location.search.slice(7).split('&')[0];
-      const page = this.getCurrentPage();
+      const page = Location.getCurrentPage();
       this.showSearchFilms(query, page);
       return;
     }
 
-    this.showPopularFilms(this.getCurrentPage());
+    this.showPopularFilms(Location.getCurrentPage());
   }
 
   async onMovieItemClick(event) {
@@ -134,7 +101,7 @@ export default class UiService {
       movieGallery.render(movieList);
 
       const paginator = new Paginator();
-      paginator.create(this.getCurrentPage(), data.total_results, 'home');
+      paginator.create(Location.getCurrentPage(), data.total_results, 'home');
     } catch (e) {
       console.log('error');
     }
@@ -157,7 +124,7 @@ export default class UiService {
       if (data.total_results / 20 > 1) {
         const paginator = new Paginator();
         paginator.create(
-          this.getCurrentPage(),
+          Location.getCurrentPage(),
           data.total_results,
           `query=${query}`,
         );
