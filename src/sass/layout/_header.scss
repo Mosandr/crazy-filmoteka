@@ -307,9 +307,9 @@
   }
 }
 
-// .modal {
-//   background-color: rgba(48, 48, 48, 0.9);
-// }
+.auth-modal {
+  background-color: rgba(48, 48, 48, 0.9);
+}
 
 .modal-content-title {
   color: #ffffff;
@@ -367,6 +367,7 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 18px;
+  color: #ffffff;
 }
 
 .input-field-label {
