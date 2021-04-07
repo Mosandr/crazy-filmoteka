@@ -1,4 +1,5 @@
 import 'materialize-css/dist/js/materialize.min.js';
+import Header from './header';
 
 export default function initModal() {
   document.addEventListener('DOMContentLoaded', function () {
@@ -9,8 +10,9 @@ export default function initModal() {
       onCloseEnd: function () {
         const over = document.querySelector('.over');
         over.classList.remove('is-shown');
-
-        // location.reload();
+        if (location.href.includes('my-library')) {
+          location.reload();
+        }
       },
     };
     M.Modal.init(cardModals, options);
