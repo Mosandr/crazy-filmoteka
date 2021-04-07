@@ -31,6 +31,7 @@ export default class ServiceDB {
     this.queueBtnHeader = document.querySelector('.queue');
     this.galleryListRef = document.querySelector('[data-js="movie-gallery"]');
     this.libraryBtn = document.querySelector('[data-js="lib-btn"]');
+    this.pageFooter = document.querySelector('[data-js="page-footer"]');
   }
 
   async getActualQueueLists(user) {
@@ -48,6 +49,10 @@ export default class ServiceDB {
     const actualListWatched = list.data().watched;
     console.dir(actualListWatched);
     this.renderGalleryOnBtnClick(actualListWatched);
+
+    if (actualListWatched.length === 0) {
+      this.pageFooter.style.position = 'fixed';
+    }
 
     this.watchBtnHeader.addEventListener(
       'click',
