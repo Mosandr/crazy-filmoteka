@@ -145,6 +145,9 @@ export default class UiService {
         return acc;
       }, []);
 
+      if (genresNames.length > 3) {
+        genresNames.length = 3;
+      }
       movie.genres = genresNames.join(', ');
       movie.year = movie.release_date ? movie.release_date.slice(0, 4) : '';
 
