@@ -4,6 +4,7 @@ import initModal from './initModal.js';
 import ModalCreate from './initCardModal';
 import ServiceDB from './serviceDB.js';
 import Location from './location';
+import UpButton from './up-btn';
 
 const serviceDB = new ServiceDB();
 
@@ -32,8 +33,12 @@ export default class UiService {
   async init() {
     this.btnDisabledChange();
     const header = new Header();
+
     initModal();
     header.init();
+
+    const upBtn = new UpButton();
+    upBtn.init();
 
     this.refs.homeBtn.addEventListener(
       'click',
