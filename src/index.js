@@ -31,19 +31,21 @@ modalCreate.modalTeamCross();
 serviceDB.auth.onAuthStateChanged(user => {
   if (user) {
     authorization.setupUI(user);
-    serviceDB.renewQueueList(user);
     serviceDB.renewWatchedList(user);
-    serviceDB.getActualQueueLists(user);
-    serviceDB.loginMessage(user);
-    if (Location.isMyLibraryPageOpen()) {
-      serviceDB.getActualWatchedLists(user);
-      serviceDB.dataForQueuePagination(user, 2);
-      serviceDB.dataForWatchedPagination(user, 2);
+    serviceDB.renewQueueList(user);
+
+    if (Location.isWatchedOpen()) {
+      serviceDB.getActualWatchedLists(user, 'watched');
+      return;
+    }
+    if (Location.isQueueOpen()) {
+      serviceDB.getActualQueueLists(user);
+      return;
     }
   } else {
     authorization.setupUI();
     if (Location.isMyLibraryPageOpen()) {
-      serviceDB.loginMessage();
+      serviceDB.showlogoutMessage();
       ui.refs.pageFooter.style.position = 'fixed';
     }
   }

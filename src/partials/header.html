@@ -14,7 +14,7 @@
             ><span>HOME</span>
         </li>
         <li data-js="lib-btn" class="item">
-          <a href="./?my-library"
+          <a href="./?my-library?watched"
             ><span>MY LIBRARY</span>
         </li>
       </ul>
@@ -56,12 +56,12 @@
     
 
     <div class="header-button">
-      <button data-js="button-watch" class=" button watch is-hidden is-active" type="button">
-        <span>WATCHED</span>
-      </button>
-      <button data-js="button-queue" class=" button queue is-hidden" type="button">
-        <span>QUEUE</span>
-      </button>
+      <a href="./?my-library&watched" data-js="button-watch" class=" button watch is-hidden" type="button">
+        WATCHED
+      </a>
+      <a href="./?my-library&queue" data-js="button-queue" class=" button queue is-hidden" type="button">
+        QUEUE
+      </a>
     </div>
   </div>
 </header>

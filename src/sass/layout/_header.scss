@@ -178,8 +178,10 @@
   margin-top: 46px;
 }
 
-.header-button button {
+.header-button > .button {
   cursor: pointer;
+  text-align: center;
+  padding: 15px 5px;
 
   &:not(:last-child) {
     margin-right: 15px;
