@@ -11,6 +11,7 @@ import libraryGalleryCardTmp from '../templates/library-gallery-card-tmp.hbs';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import Location from './location';
 
 firebase.initializeApp({
   apiKey: 'AIzaSyDckuyQARNfaPXRs7Jiz4Xgr28aczvsv5w',
@@ -38,10 +39,11 @@ export default class ServiceDB {
     //get info from user's collection
     const list = await this.db.collection('users').doc(user.uid).get();
     const actualListQueue = list.data().queue;
-    this.queueBtnHeader.addEventListener(
-      'click',
-      this.renderGalleryOnBtnClick.bind(this, actualListQueue),
-    );
+    this.renderGalleryOnBtnClick(actualListQueue);
+    // this.queueBtnHeader.addEventListener(
+    //   'click',
+    //   this.renderGalleryOnBtnClick.bind(this, actualListQueue),
+    // );
   }
   async getActualWatchedLists(user) {
     //get info from user's collection
@@ -53,10 +55,10 @@ export default class ServiceDB {
       this.pageFooter.style.position = 'fixed';
     }
 
-    this.watchBtnHeader.addEventListener(
-      'click',
-      this.renderGalleryOnBtnClick.bind(this, actualListWatched),
-    );
+    // this.watchBtnHeader.addEventListener(
+    //   'click',
+    //   this.renderGalleryOnBtnClick.bind(this, actualListWatched),
+    // );
   }
 
   renderGalleryOnBtnClick(actualItemsList) {
@@ -74,6 +76,7 @@ export default class ServiceDB {
       el.textContent = el.textContent.trim().split('').splice(0, 4).join('');
     });
   }
+
   async changeWattchedList(user) {
     try {
       const watchedList = await this.db.collection('users').doc(user.uid).get();
@@ -92,6 +95,7 @@ export default class ServiceDB {
       console.log(e);
     }
   }
+
   async changeQueueList(user) {
     const queueList = await this.db.collection('users').doc(user.uid).get();
     let newList = queueList.data().queue;
@@ -113,15 +117,19 @@ export default class ServiceDB {
       this.handleWatchBtnClick.bind(this, user),
     );
   }
-  handleWatchBtnClick(user) {
-    this.changeWattchedList(user).then(data => {
-      this.db.collection('users').doc(user.uid).set(
-        {
-          watched: data,
-        },
-        { merge: true },
-      );
-    });
+
+  async handleWatchBtnClick(user) {
+    const data = await this.changeWattchedList(user);
+    this.db.collection('users').doc(user.uid).set(
+      {
+        watched: data,
+      },
+      { merge: true },
+    );
+
+    if (Location.isWatchedOpen()) {
+      this.renderGalleryOnBtnClick(data);
+    }
   }
 
   renewQueueList(user) {
@@ -131,58 +139,58 @@ export default class ServiceDB {
     );
   }
 
-  handleQueueBtnClick(user) {
-    this.changeQueueList(user).then(data => {
-      this.db.collection('users').doc(user.uid).set(
-        {
-          queue: data,
-        },
-        { merge: true },
-      );
-    });
-  }
-
-  loginMessage(user) {
-    const loginMessage = document.querySelector('.login-message');
-    if (user) {
-      loginMessage.textContent = '';
-    } else {
-      loginMessage.textContent = 'Please Login to see your library';
+  async handleQueueBtnClick(user) {
+    const data = await this.changeQueueList(user);
+    this.db.collection('users').doc(user.uid).set(
+      {
+        queue: data,
+      },
+      { merge: true },
+    );
+    if (Location.isQueueOpen()) {
+      this.renderGalleryOnBtnClick(data);
     }
   }
 
-  async dataForQueuePagination(user, page) {
-    const filmList = await this.db.collection('users').doc(user.uid).get();
-    const queueList = filmList.data().queue;
-    const numberOfFilms = queueList.length;
-    const paginationInfo = {};
-    paginationInfo.num = numberOfFilms;
-
-    if (Math.floor((numberOfFilms - 1) / 20) === 0) {
-      paginationInfo.films = queueList;
-      return paginationInfo;
-    } else {
-      const idxStart = (page - 1) * 20;
-      const filmsForPage = queueList.splice(idxStart, 20);
-      paginationInfo.films = filmsForPage;
-      return paginationInfo;
+  showlogoutMessage(user) {
+    const messageRef = document.querySelector('.login-message');
+    if (!user) {
+      messageRef.textContent = 'Please Login to see your library';
     }
   }
 
-  async dataForWatchedPagination(user, page) {
-    const filmList = await this.db.collection('users').doc(user.uid).get();
-    const watchedList = filmList.data().watched;
-    const numberOfFilms = watchedList.length;
-    const paginationInfo = {};
-    paginationInfo.num = numberOfFilms;
-    if (Math.floor((numberOfFilms - 1) / 20) === 0) {
-      paginationInfo.films = watchedList;
-      return paginationInfo;
-    } else {
-      const idxStart = (page - 1) * 20;
-      const filmsForPage = watchedList.splice(idxStart, 20);
-      paginationInfo.films = filmsForPage;
-      return paginationInfo;
-    }
-  }
+  // async dataForQueuePagination(user, page) {
+  //   const filmList = await this.db.collection('users').doc(user.uid).get();
+  //   const queueList = filmList.data().queue;
+  //   const numberOfFilms = queueList.length;
+  //   const paginationInfo = {};
+  //   paginationInfo.num = numberOfFilms;
+
+  //   if (Math.floor((numberOfFilms - 1) / 20) === 0) {
+  //     paginationInfo.films = queueList;
+  //     return paginationInfo;
+  //   } else {
+  //     const idxStart = (page - 1) * 20;
+  //     const filmsForPage = queueList.splice(idxStart, 20);
+  //     paginationInfo.films = filmsForPage;
+  //     return paginationInfo;
+  //   }
+  // }
+
+  // async dataForWatchedPagination(user, page) {
+  //   const filmList = await this.db.collection('users').doc(user.uid).get();
+  //   const watchedList = filmList.data().watched;
+  //   const numberOfFilms = watchedList.length;
+  //   const paginationInfo = {};
+  //   paginationInfo.num = numberOfFilms;
+  //   if (Math.floor((numberOfFilms - 1) / 20) === 0) {
+  //     paginationInfo.films = watchedList;
+  //     return paginationInfo;
+  //   } else {
+  //     const idxStart = (page - 1) * 20;
+  //     const filmsForPage = watchedList.splice(idxStart, 20);
+  //     paginationInfo.films = filmsForPage;
+  //     return paginationInfo;
+  //   }
+  // }
 }

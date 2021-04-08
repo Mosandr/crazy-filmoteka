@@ -50,10 +50,14 @@ export default class UiService {
       this.onMovieItemClick.bind(this),
     );
 
-    if (Location.isMyLibraryPageOpen()) {
+    if (Location.isWatchedOpen()) {
       header.onMyLibraryLinkClick();
+      return;
+    }
 
-      // рисуем просмотренные фильмы в галерею
+    if (Location.isQueueOpen()) {
+      header.onMyLibraryLinkClick();
+      header.onQueueClick();
       return;
     }
 
@@ -138,6 +142,7 @@ export default class UiService {
     } catch (e) {
       this.refs.pageHeader.querySelector('.search-form__error').textContent =
         'Search result not successful. Enter the correct movie name and try again';
+      this.refs.pageFooter.style.position = 'fixed';
     }
   }
 
