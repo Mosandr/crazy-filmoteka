@@ -99,8 +99,10 @@
   display: none;
   position: fixed;
   color: $title-dark-theme-color;
-  bottom: 30px;
-  right: 30px;
+  height: 40px;
+
+  top: 40px;
+  right: 40px;
   z-index: 9999;
   background-color: $accent-color;
   border-radius: 5px;
