@@ -1,18 +1,15 @@
 .modal-team-container {
+  position: absolute;
+  transform: translate(-50%, -10%);
   padding: 50px;
   max-width: 280px;
-  max-height: 2000px;
+  max-height: 2500px;
   width: 100%;
   background-color: #fff;
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: bold;
   overflow: hidden;
-
-  @media (min-width: 320px) {
-    position: absolute;
-    transform: translate(-50%, -10%);
-  }
 
   @media screen and (min-width: $tablet) {
     max-width: 618px;
@@ -28,7 +25,7 @@
   @media screen and (min-width: $tablet) {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   @media screen and (min-width: $desktop) {
