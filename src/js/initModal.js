@@ -1,6 +1,7 @@
 import 'materialize-css/dist/js/materialize.min.js';
 
 export default function initModal() {
+  const upBtn = document.querySelector('.up-btn');
   document.addEventListener('DOMContentLoaded', function () {
     const authModals = document.querySelectorAll('.auth-modal');
     M.Modal.init(authModals);
@@ -9,6 +10,10 @@ export default function initModal() {
       onCloseEnd: function () {
         const over = document.querySelector('.over');
         over.classList.remove('is-shown');
+        upBtn.classList.remove('is-hidden');
+      },
+      onOpenStart: function () {
+        upBtn.classList.add('is-hidden');
       },
     };
     M.Modal.init(cardModals, options);
@@ -17,6 +22,10 @@ export default function initModal() {
       onCloseEnd: function () {
         const overTeam = document.querySelector('.team-overlay');
         overTeam.classList.remove('is-shown-team');
+        upBtn.classList.remove('is-hidden');
+      },
+      onOpenStart: function () {
+        upBtn.classList.add('is-hidden');
       },
     };
     M.Modal.init(teamModals, optionsTeam);
