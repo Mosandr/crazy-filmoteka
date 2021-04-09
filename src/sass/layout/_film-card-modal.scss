@@ -4,17 +4,14 @@
 }
 
 .data__modal__film {
+  position: absolute;
+  transform: translate(-50%, -10%);
   padding: 20px;
   max-width: 280px;
-  max-height: 958px;
+  max-height: 1500px;
   width: 100%;
   background-color: #fff;
   overflow: hidden;
-
-  @media (min-width: 320px) {
-    position: absolute;
-    transform: translate(-50%, -10%);
-  }
 
   @media (min-width: 480px) {
     max-width: 400px;
