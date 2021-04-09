@@ -6,9 +6,10 @@
 .data__modal__film {
   padding: 20px;
   max-width: 280px;
-  max-height: 100%;
+  max-height: 958px;
   width: 100%;
   background-color: #fff;
+  overflow: hidden;
 
   @media (min-width: 320px) {
     position: absolute;
@@ -195,7 +196,7 @@
 
 .over {
   position: fixed;
-  z-index: 0;
+  z-index: 1001;
   top: 0;
   left: 0;
   width: 100%;
