@@ -37,6 +37,7 @@ export default class Auth {
       })
       .then(() => {
         M.Modal.getInstance(this.refs.modalSignUp).close();
+        location.reload();
 
         this.refs.signupForm.reset();
         this.refs.signupForm.querySelector('.error').innerHTML = '';
