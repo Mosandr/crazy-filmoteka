@@ -50,3 +50,6 @@ serviceDB.auth.onAuthStateChanged(user => {
     }
   }
 });
+window.onload = function () {
+  document.querySelector('.backdrop-container').style.display = 'none';
+};
