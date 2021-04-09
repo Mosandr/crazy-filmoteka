@@ -138,7 +138,10 @@ export default class UiService {
           `query=${query}`,
         );
       }
-      this.refs.pageHeader.querySelector('.search-form-input').value = query;
+
+      this.refs.pageHeader.querySelector(
+        '.search-form-input',
+      ).value = decodeURIComponent(location.search).slice(7);
     } catch (e) {
       this.refs.pageHeader.querySelector('.search-form__error').textContent =
         'Search result not successful. Enter the correct movie name and try again';
