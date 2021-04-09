@@ -27,6 +27,7 @@
   flex-basis: 280px;
   cursor: pointer;
   margin: 10px;
+  transition: transform $transition-duration $transition-function;
 
   @media (min-width: $tablet) {
     margin: 15px;
@@ -37,6 +38,9 @@
     margin: 15px;
     flex-basis: calc((100% - 90px) / 3);
   }
+}
+.gallery__item:hover {
+  transform: scale(1.05);
 }
 
 .gallery__img {
