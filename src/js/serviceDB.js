@@ -14,12 +14,12 @@ import 'firebase/firestore';
 import Location from './location';
 
 firebase.initializeApp({
-  apiKey: 'AIzaSyDckuyQARNfaPXRs7Jiz4Xgr28aczvsv5w',
-  authDomain: 'crazy-filmoteka.firebaseapp.com',
-  projectId: 'crazy-filmoteka',
-  storageBucket: 'crazy-filmoteka.appspot.com',
-  messagingSenderId: '827169246677',
-  appId: '1:827169246677:web:2524211488e4048eb1c15c',
+  apiKey: 'AIzaSyAeSUiQwnRQhecb5TJXGa2LZZdNP_oTZbw',
+  authDomain: 'filmoteka-f9f0a.firebaseapp.com',
+  projectId: 'filmoteka-f9f0a',
+  storageBucket: 'filmoteka-f9f0a.appspot.com',
+  messagingSenderId: '708883939185',
+  appId: '1:708883939185:web:a8ff6f1cd495b364d180d0',
 });
 
 export default class ServiceDB {
